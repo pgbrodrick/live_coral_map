@@ -1,0 +1,215 @@
+
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+
+<style>
+.center_map {
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+}
+</style>
+
+
+<title> Live Coral Bleaching | ASU GDCS </title>
+
+
+
+<script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=drawing"></script>
+
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+<script>
+
+
+
+function add_marker(latlong, type, content_str, map, infowindow){
+    var marker = new google.maps.Marker({
+         position: latlong,
+         icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            strokeColor: '#C93211'
+          },
+         //icon: icons[features[i].type].icon,
+         map: map
+       });
+
+       google.maps.event.addListener(marker, 'click', function() {
+
+       var iwContent =  content_str;
+         infowindow.setContent(content_str);
+         infowindow.open(map, marker);
+        });
+   
+}
+
+
+
+function CSVToArray( strData, strDelimiter ){
+	// Check to see if the delimiter is defined. If not,
+	// then default to comma.
+	strDelimiter = (strDelimiter || ",");
+
+	// Create a regular expression to parse the CSV values.
+	var objPattern = new RegExp(
+		(
+			// Delimiters.
+			"(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+			// Quoted fields.
+			"(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+			// Standard fields.
+			"([^\"\\" + strDelimiter + "\\r\\n]*))"
+		), "gi");
+
+	// Create an array to hold our data. Give the array
+	// a default empty first row.
+	var arrData = [[]];
+
+	// Create an array to hold our individual pattern
+	// matching groups.
+	var arrMatches = null;
+
+	// Keep looping over the regular expression matches
+	// until we can no longer find a match.
+	while (arrMatches = objPattern.exec( strData ))
+	{
+		// Get the delimiter that was found.
+		var strMatchedDelimiter = arrMatches[ 1 ];
+
+		// Check to see if the given delimiter has a length
+		// (is not the start of string) and if it matches
+		// field delimiter. If id does not, then we know
+		// that this delimiter is a row delimiter.
+		if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter))
+		{
+			// Since we have reached a new row of data,
+			// add an empty row to our data array.
+			arrData.push( [] );
+
+		}
+
+		// Now that we have our delimiter out of the way,
+		// let's check to see which kind of value we
+		// captured (quoted or unquoted).
+		if (arrMatches[ 2 ]){
+			// We found a quoted value. When we capture
+			// this value, unescape any double quotes.
+			var strMatchedValue = arrMatches[ 2 ].replace(
+				new RegExp( "\"\"", "g" ),
+				"\""
+				);
+
+		} else 
+		{
+			// We found a non-quoted value.
+			var strMatchedValue = arrMatches[ 3 ];
+		}
+
+		// Now that we have our value string, let's add
+		// it to the data array.
+		arrData[ arrData.length - 1 ].push( strMatchedValue );
+	}
+
+	// Return the parsed data.
+	return( arrData );
+}
+
+
+function initialize_coral_map() {
+
+var map;
+var infowindow;
+var startBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(20.7,-156.6),
+    new google.maps.LatLng(21.0,-156.55));
+var mapMinZoom = 7;
+var mapMaxZoom = 25;
+
+
+    map = new google.maps.Map(document.getElementById("map_canvas"),{maxZoom: mapMaxZoom, minZoom:mapMinZoom, mapTypeId:'hybrid'});
+
+    <!-- map.fitBounds(mapBounds); -->
+    map.fitBounds(startBounds);
+
+
+    var iconBase = './'
+    var icons = {
+      bleached: {
+        icon: iconBase + 'bleached-coral_small.jpg'
+      }
+    };
+
+	//var returnValue = "";
+	//var request = new XMLHttpRequest();
+    //request.open("GET", "data_points.csv", false);
+    //document.write("hi")
+	//request.send(null);
+	//returnValue = request.responseText;
+    //var data = CSVToArray(returnValue);
+
+
+
+    //var features = []
+    //for (var index = 0; index < data.length; index++)
+    //{
+    //    var ll = new google.maps.LatLng(parseFloat(data[i][0]), parseFloat(data[i][1]))
+    //    features.push({position: ll, dateinfo: data[i][2]})
+    //}
+        var features = [
+          {
+            position: new google.maps.LatLng(20.78839892, 	-156.56087586),
+            type: 'bleached',
+            dateinfo: "Date 1"
+          },
+          {
+            position: new google.maps.LatLng(20.88142837, 	-156.69040599),
+            type: 'bleached',
+            dateinfo: "Date 2"
+          },
+          {
+            position: new google.maps.LatLng(20.91575741, 	-156.69788421),
+            type: 'bleached',
+            dateinfo: "Date 3"
+          }
+        ];
+
+
+        infowindow = new google.maps.InfoWindow();
+
+        // Event that closes the Info Window with a click on the map
+        google.maps.event.addListener(map, 'click', function() {
+           infoWindow.close();
+        });
+
+
+
+        // Create markers.
+        for (var i = 0; i < features.length; i++) {
+            add_marker(features[i].position, features[i].type, features[i].dateinfo, map, infowindow)
+         };
+
+        var heatmapData = [];
+        for (var i = 0; i < features.length; i++) {
+            heatmapData.push(features[i].position);
+        }
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          dissipating: false,
+          map: map
+        });
+
+}
+
+</script>
+
+</head>
+
