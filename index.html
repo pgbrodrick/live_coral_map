@@ -172,32 +172,22 @@ var mapMaxZoom = 25;
           {
             position: new google.maps.LatLng(20.78839892, 	-156.56087586),
             type: 'bleached',
-            dateinfo: "Date 1"
+            dateinfo: "08/15/2019"
           },
           {
             position: new google.maps.LatLng(20.88142837, 	-156.69040599),
             type: 'bleached',
-            dateinfo: "Date 2"
+            dateinfo: "08/15/2019"
           },
           {
             position: new google.maps.LatLng(20.91575741, 	-156.69788421),
             type: 'bleached',
-            dateinfo: "Date 3"
+            dateinfo: "08/15/2019"
           },
 	   {
-            position: new google.maps.LatLng(20.91675741, 	-156.69988421),
+            position: new google.maps.LatLng(19.87313644, 	-155.9220196),
             type: 'bleached',
-            dateinfo: "Date 4"
-          },
-		         {
-            position: new google.maps.LatLng(20.81575741, 	-156.65788421),
-            type: 'bleached',
-            dateinfo: "Date 5"
-          },
-		         {
-            position: new google.maps.LatLng(20.96575741, 	-156.64788421),
-            type: 'bleached',
-            dateinfo: "Date 6"
+            dateinfo: "08/18/2019"
           }
         ];
 
@@ -213,7 +203,7 @@ var mapMaxZoom = 25;
 
         // Create markers.
         for (var i = 0; i < features.length; i++) {
-            add_marker(features[i].position, features[i].type, features[i].dateinfo, map, infowindow)
+            add_marker(features[i].position, features[i].type, 'Date Recorded: ' + features[i].dateinfo, map, infowindow)
          };
 
         var heatmapData = [];
