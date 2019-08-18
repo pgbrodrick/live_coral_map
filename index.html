@@ -35,7 +35,7 @@ var map;
 var heatmap;
 
 
-function add_marker(latlong, type, content_str, map, infowindow){
+function add_marker(latlong, content_str, map, infowindow){
     var marker = new google.maps.Marker({
          position: latlong,
          icon: {
@@ -43,7 +43,6 @@ function add_marker(latlong, type, content_str, map, infowindow){
             scale: 2,
             strokeColor: '#C93211'
           },
-         //icon: icons[features[i].type].icon,
          map: map
        });
 
@@ -140,8 +139,8 @@ function initialize_coral_map() {
 
 var infowindow;
 var startBounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(20.7,-156.6),
-    new google.maps.LatLng(21.0,-156.55));
+    new google.maps.LatLng(19.0,-156.6),
+    new google.maps.LatLng(21.0,-155.5));
 var mapMinZoom = 7;
 var mapMaxZoom = 25;
 
@@ -171,22 +170,18 @@ var mapMaxZoom = 25;
         var features = [
           {
             position: new google.maps.LatLng(20.78839892, 	-156.56087586),
-            type: 'bleached',
             dateinfo: "08/15/2019"
           },
           {
             position: new google.maps.LatLng(20.88142837, 	-156.69040599),
-            type: 'bleached',
             dateinfo: "08/15/2019"
           },
           {
             position: new google.maps.LatLng(20.91575741, 	-156.69788421),
-            type: 'bleached',
             dateinfo: "08/15/2019"
           },
 	   {
             position: new google.maps.LatLng(19.87313644, 	-155.9220196),
-            type: 'bleached',
             dateinfo: "08/18/2019"
           }
         ];
@@ -203,7 +198,7 @@ var mapMaxZoom = 25;
 
         // Create markers.
         for (var i = 0; i < features.length; i++) {
-            add_marker(features[i].position, features[i].type, 'Date Recorded: ' + features[i].dateinfo, map, infowindow)
+            add_marker(features[i].position, 'Date Recorded: ' + features[i].dateinfo, map, infowindow)
          };
 
         var heatmapData = [];
