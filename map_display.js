@@ -25,16 +25,17 @@ var mapMaxZoom = 25;
     map.fitBounds(startBounds);
 
 
-    var pointControlDiv = new OverlayDiv(map, 0, "Observed Points");
+    var pointControlDiv = new OverlayDiv(map, 0, "Observed Bleaching");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
 
-    var pointHeatControlDiv = new OverlayDiv(map, 1, "Point Heatmap");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointHeatControlDiv.div);
+    //var pointHeatControlDiv = new OverlayDiv(map, 1, "Point Heatmap");
+    //map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointHeatControlDiv.div);
 
-    var satHeatControlDiv = new OverlayDiv(map, 2, "Satellite Heatmap - DEMO ONLY");
+    var satHeatControlDiv = new OverlayDiv(map, 2, "Satellite Detected Bleaching");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(satHeatControlDiv.div);
 
-    controllist = [ pointControlDiv, pointHeatControlDiv, satHeatControlDiv];
+    //controllist = [ pointControlDiv, pointHeatControlDiv, satHeatControlDiv];
+    controllist = [ pointControlDiv, satHeatControlDiv];
 
 
 	//var returnValue = "";

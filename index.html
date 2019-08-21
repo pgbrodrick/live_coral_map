@@ -15,9 +15,45 @@
     margin: auto;
     width: 80%;
     height: 80%;
-    padding: 10px;
+    z-index: 10;
+    position: static;
+}
+.container {
+  position: relative;
+}
+.banner {
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+.head_content {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff; 
+  font-family: Verdana
+}
+
+.section_header {
+  width: 100%;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff; 
+  font-family: Verdana
+}
+
+.text_descriptions {
+    color: #ffffff; 
+    margin-left: 10%;
+    font-size: 14px;
+    font-family: Verdana;
 }
 </style>
+
+
 
 
 <title> Live Coral Bleaching | ASU GDCS </title>
@@ -40,16 +76,60 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 
 
 
-<div>
-<p>&nbsp;</p>
-<div>
+<!--- ######################### Banner ######################### --->
+<div class="container">
+    <img class="banner" src="images/divephoto_papabay_2018.jpg" />
+    <div class="head_content" > <h1>Coral Bleaching Monitor</h1></div>
+</div>
 
-<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 28px;">Coral Bleaching Tracker</span></h1>
+<div> <p>&nbsp;</p> <div>
+<div> <p>&nbsp;</p> <div>
 
+<!--- ######################### Description ######################### --->
+<div class="container">
+    <div class="section_header"><h1>What is Coral Bleaching?</h1></div>
+</div>
+<div> <p>&nbsp;</p> <div>
+
+
+<p class="text_descriptions"><img src="images/DSC_1967.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
+<p class="text_descriptions"><img src="images/DSC_2217.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
+<p class="text_descriptions"><img src="images/DSC_2129.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
+<p class="text_descriptions"><img src="images/DSC_2033.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
+
+
+
+
+
+<!--- ######################### Description ######################### --->
+<div class="container">
+    <div class="section_header"><h1>Where is Bleaching Occuring?</h1></div>
+</div>
 <div id="map_canvas" class="center_map"></div>
+
+<a href="submission.html" style="text-align: center; font-family: Verdana;"><span style="color: #000000; font-size: 16px;">Demo-only new point submission page.</span></a>
+
+
+
+
+
+
+<!--- ######################### Footer --->
 <div> <p>&nbsp;</p> <div>
 <div> <p>&nbsp;</p> <div>
-<a href="submission.html" style="text-align: center; font-family: Verdana;"><span style="color: #ff0000; font-size: 16px;">Demo-only new point submission page.</span></a>
+<div class="container">
+        <div style="float: left; width: 33.3%;">
+        <img style="display: block; margin: auto; height: 100px; background-color: white;" src="images/GDCS logo.png" />
+        </div>
+        <div style="float: left; width: 33.3%;">
+        <img style="display: block; margin: auto; height: 100px; background-color: white;" src="images/NOAA_SquareWhiteBackground.png" />
+        </div>
+        <div style="float: left; width: 33.3%;">
+        <img style="display: block; margin: auto; height: 100px; background-color: white;" src="images/DAR logo.jpg" />
+        </div>
+</div>
+
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="./papaparse.min.js"></script>
