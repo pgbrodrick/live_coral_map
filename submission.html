@@ -13,10 +13,25 @@
 <style>
 .center_map {
     margin: auto;
-    width: 50%;
+    width: 80%;
     height: 40%;
     padding: 10px;
 }
+.text_descriptions {
+    color: #ffffff; 
+    margin-left: 10%;
+    font-size: 14px;
+    font-family: Verdana;
+}
+
+.form {
+    display: none; 
+    text-align: center;
+    color: #ffffff; 
+    font-size: 14px;
+    font-family: Verdana;
+}
+
 </style>
 
 
@@ -43,12 +58,32 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 <div> <p>&nbsp;</p> <div>
 
 
-<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 28px;">Add a New Data Point</span></h1>
+<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 28px;">Report a Bleaching Event</span></h1>
+
+<p
 <div id="map_canvas" class="center_map"></div>
-<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 16px;">To get started, click on the map to add a new in the location the event was observed.</span></h1>
+<p class="text_descriptions"> Thanks for helping to identify a new bleaching event.  To get started, zoom to the appropriate location on the map and drag the pointer to the area of interest.  Next click 'Populate Coordinates'</p>
+
 <div> <p>&nbsp;</p> <div>
 <div> <p>&nbsp;</p> <div>
+
+
+
+<div id="formDiv" class="form">
+  
+  <form>
+    Latitude (dd): <input type="text" id="latitude">&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude">
+  </form>
+  <button type="button" id="submission_button">Submit Bleaching Event</button>
+
+</div>
+
+<div> <p>&nbsp;</p> <div>
+
+<div id="post_submission_text" style="display: none;">
 <h1 style="text-align: center; font-family: Verdana;"><span style="color: #ff0000; font-size: 16px;">This is a demo-only site.</span></h1>
+</div>
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="./papaparse.min.js"></script>

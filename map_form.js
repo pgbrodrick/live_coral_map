@@ -258,34 +258,27 @@ function AddPointControl(controlDiv, map) {
   controlText.style.width = '200px';
   controlText.style.paddingUp = '2px';
   controlText.style.paddingDown = '2px';
-  controlText.innerHTML = 'Add a New Point at the Selected Location';
+  controlText.innerHTML = 'Populate Coordinates';
   controlUI.appendChild(controlText);
   this.controlText = controlText;
 
   // Setup the click event listener
   this.controlUI.addEventListener('click', function() {
-    if (candownload) {
-      bounds = global_rect.getBounds();
-
-      var email = prompt("Please enter the email address you wish the file to be sent to:", "");
-      var valid = false;
-      while (valid == false) {
-        if (email.indexOf('@') > -1){
-          valid = true;
-      }
-        else{
-          email = prompt("Oops, that looks like an invalid email address. Please enter the email address you wish the file to be sent to:", null);
-          if (email == null) {
-            alert('No email provided.  Request will not be processed');
-            valid = true;
-          }
-        }
-      }
-      if (email != null) {
-      launch_download_script(bounds.b.b,bounds.f.b,bounds.b.f,bounds.f.f,1,email,tiffonly);
-      }   
-    }
+    show_form()
   });
+}
+
+function show_form(){
+  var x = document.getElementById("formDiv");
+  x.style.display = "block";
+
+  document.getElementById("latitude").value = added_point.getPosition().lat();
+  document.getElementById("longitude").value = added_point.getPosition().lng();
+  document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+}
+
+function submit_form() {
+    document.getElementById("post_submission_text").style.display="block";
 }
 
 function AddPointDiv(map) {
