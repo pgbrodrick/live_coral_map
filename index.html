@@ -11,6 +11,118 @@
 
 
 <style>
+.App {
+  text-align: center;
+}
+
+#home {
+  background: linear-gradient(to right, rgba(0,0,0,.8), rgba(0, 0, 0, 0.6)), url("./images/divephoto_papabay_2018.jpg");
+  height:auto;
+  background-position: absolute;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+  text-align:center;
+  align-content: center;
+  padding:10%;
+  overflow:hidden;
+  align-content: center;
+  text-align:center;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 70pt;
+  color: whitesmoke;
+}
+
+
+h2 {
+  text-align: center;
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 70pt;
+  color: black;
+}
+
+h3 {
+  font-family:'Segoe UI';
+  font-size:40px;
+}
+
+.report-button{
+  border-radius: 10px;
+  font-size: 40px;
+  background-color: #FF7F50;
+  color: black;
+  align-self: center;
+  display: inline-block;
+  padding: 5%;
+  text-align:center;
+
+
+}
+
+.report-button:hover {
+  background-color:white;
+}
+
+
+
+.coral-img {
+  width: 150px;
+}
+
+.dive-img {
+  width: 350px;
+  float:left;
+}
+
+
+
+.white-background-div {
+  padding:100px;
+  padding-top:150px;
+  background-color:white;
+  color: solid black;
+  overflow:hidden;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.black-background-div {
+  padding:100px;
+  padding-top:150px;
+  background-color:black;
+  color: white;
+  overflow:hidden;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.action-div {
+  background: linear-gradient(to right, rgba(0,0,0,.8), rgba(0, 0, 0, 0.6)), url("./images/DSC_2033.jpg");
+  height:auto;
+  background-position: absolute;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+  text-align:center;
+  align-content: center;
+  padding:10%;
+  overflow:hidden;
+  color:white;
+}
+
 .center_map {
     margin: auto;
     width: 80%;
@@ -18,50 +130,36 @@
     z-index: 10;
     position: static;
 }
-.container {
-  position: relative;
-}
-.banner {
-    width: 100%;
-    height: auto;
-    z-index: 0;
-}
-.head_content {
-  position: absolute;
-  left: 0;
-  top: 10%;
-  width: 100%;
-  text-align: center;
-  font-size: 28px;
-  color: #ffffff; 
-  font-family: Verdana
-}
-
-.section_header {
-  width: 100%;
-  text-align: center;
-  font-size: 28px;
-  color: #ffffff; 
-  font-family: Verdana
-}
-
-.text_descriptions {
-    color: #ffffff; 
-    margin-left: 10%;
-    font-size: 14px;
-    font-family: Verdana;
-}
 </style>
 
 
 
 
-<title> Live Coral Bleaching | ASU GDCS </title>
+
+
 <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
 <script type='text/javascript' src='scripts/map_display.js'></script>
+
+
+<script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
+<script type='text/javascript' src='scripts/map_form.js'></script>
 </head>
 
+<!--- ######################### Home Page ######################### --->
+<div id= 'home'>
+          <h1 >
+            Hawaiian Coral Bleaching
+          </h1>
+          <br />
+          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+          <br />
+          <div class = 'report-button'>
+              <b>Report Bleaching Event</b>
+          </div>
 
+</div>
 
 
 
@@ -76,44 +174,88 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 
 
 
-<!--- ######################### Banner ######################### --->
-<div class="container">
-    <img class="banner" src="images/divephoto_papabay_2018.jpg" />
-    <div class="head_content" > <h1>Coral Bleaching Monitor</h1></div>
+<!--- ######################### Background ######################### --->
+<div class="white-background-div">
+    <h2>Coral Bleaching</h2>
+<img src="images/DSC_1967.jpg" alt="Null" width="30%" align="middle"> This is some text.
+<br />
+<img src="images/DSC_2217.jpg" alt="Null" width="30%" align="middle"> This is some text.
+<br />
+<img src="images/DSC_2129.jpg" alt="Null" width="30%" align="middle"> This is some text.
+<br />
+<img src="images/DSC_2033.jpg" alt="Null" width="30%" align="middle"> 
+</div>
+<div class="black-background-div">
+<h1>Hawaiian Coral Bleaching Event</h1>
+MORE INFO
+</div>
+</div>
+<div> <p>&nbsp;</p> <div>
+
+<!--- ######################### Action ######################### --->
+
+<div class = 'action-div'>
+        <h1>Reduce damage to coral reefs</h1>
+        <img src='./images/scubaDiver2.png' alt="Scuba Diver"  class = 'dive-img'/>
+        <h3>       
+        Do not dive close to reefs
+            <br />
+        Wash off sunscreen before entering water
+            <br />
+            ...
+        </h3>
 </div>
 
-<div> <p>&nbsp;</p> <div>
-<div> <p>&nbsp;</p> <div>
-
-<!--- ######################### Description ######################### --->
-<div class="container">
-    <div class="section_header"><h1>What is Coral Bleaching?</h1></div>
-</div>
-<div> <p>&nbsp;</p> <div>
 
 
-<p class="text_descriptions"><img src="images/DSC_1967.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
-<p class="text_descriptions"><img src="images/DSC_2217.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
-<p class="text_descriptions"><img src="images/DSC_2129.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
-<p class="text_descriptions"><img src="images/DSC_2033.jpg" alt="Null" width="30%" align="middle"> This is some text.</p>
+<!--- ######################### Location ######################### --->
+<div class="white-background-div">
+   <h2>Location of Confirmed Bleaching Events</h2>
 
-
-
-
-
-<!--- ######################### Description ######################### --->
-<div class="container">
-    <div class="section_header"><h1>Where is Bleaching Occuring?</h1></div>
-</div>
 <div id="map_canvas" class="center_map"></div>
+
+
+</div>
+
+
+<!--- ######################### Report ######################### --->
+
+
+
+
+<div class = 'black-background-div'>
+<div class="page page-id-2656 page-template-default  not-admin wpb-js-composer js-comp-ver-4.3.5 vc_responsive" 
+data-header-inherit-rc="false" data-header-search="true" data-animated-anchors="false" data-ajax-transitions="false" 
+data-full-width-header="false" data-slide-out-widget-area="false" data-loading-animation="none" 
+data-bg-header="false" data-ext-responsive="true" data-header-resize="0" data-header-color="light"  
+data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize_coral_map()">
+
+
+
+<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 28px;">Report a Bleaching Event</span></h1>
+
+<p
+<div id="map_canvas" class="center_map"> </div>
+<p class="text_descriptions"> Thanks for helping to identify a new bleaching event.  To get started, zoom to the appropriate location on the map and drag the pointer to the area of interest.  Next click 'Populate Coordinates'</p>
+
+
+
+
+<div id="formDiv" class="form">
+  
+  <form>
+    Latitude (dd): <input type="text" id="latitude">&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude">
+  </form>
+  <button type="button" id="submission_button">Submit Bleaching Event</button>
+
+</div>
+
 <div> <p>&nbsp;</p> <div>
 
-<p class="text_descriptions" style="text-align: center; font-size: 20">Have you seen a bleaching event that's not shown above? <a style="color: white;" href="submission.html"> Report it here! </a></p>
-
-
-
-
-
+<div id="post_submission_text" style="display: none;">
+<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ff0000; font-size: 16px;">This is a demo-only site.</span></h1>
+</div>
+</div>
 
 <!--- ######################### Footer --->
 <div> <p>&nbsp;</p> <div>
