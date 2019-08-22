@@ -78,11 +78,14 @@
 
   
   @media screen and (max-width: 768px) {
-  
   #content-desktop {display: none;}
-
-  
   }
+
+  @media screen and (max-width: 768px) {
+    h1, h2 {font-size:40px;}
+    h3 {font-size:30px;}
+    h5, h4 {font-size:20px;}
+    }
   
   .coral-img {
     width: 150px;
