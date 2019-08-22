@@ -212,7 +212,7 @@ function AddPointControl(controlDiv, map) {
   controlText.style.width = '200px';
   controlText.style.paddingUp = '2px';
   controlText.style.paddingDown = '2px';
-  controlText.innerHTML = 'Populate Coordinates';
+  controlText.innerHTML = 'Report Bleaching';
   controlUI.appendChild(controlText);
   this.controlText = controlText;
 
