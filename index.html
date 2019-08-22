@@ -58,7 +58,12 @@ h3 {
 h4 {
   font-family:'Segoe UI';
   font-size:32px;
-  text-align: center;
+  text-align: left;
+}
+h5 {
+  font-family:'Segoe UI';
+  font-size:30px;
+  text-align: left;
 }
 
 .report-button{
@@ -183,7 +188,7 @@ h4 {
 .grid-item {
   padding: 20px;
   font-size: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 .grid-container-logo {
@@ -231,7 +236,7 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 <div id= 'home'>
     <div class = 'title'>
         <h1>
-          Hawaiian Coral Bleaching
+          Hawaii Coral Bleaching Tracker
         </h1>
         
         <br />
@@ -251,7 +256,7 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 <div class="white-background-div">
     <h2>Coral Bleaching</h2>
     <h4>
-        Ocean heatwaves are becoming more and more common due to climate change.  Like atmospheric heatwaves that hit cities and cause problems for people, ocean heatwaves cause stress on reefs that can lead to coral death.  Hawaii is currently undergoing an ocean heatwave, and the State of Hawaii Division of Aquatic Resources (Hawaii-DAR) has asked all ocean users to reduce secondary stress on coral reefs. This website identifies reefs that are bleaching so that ocean users can work together to reduce these secondary stresses and protect Hawaiiʻs corals for the future.
+        Ocean heatwaves are becoming more and more common due to climate change.  Like atmospheric heatwaves that hit cities and cause problems for people, ocean heatwaves cause stress on reefs that can lead to coral death.  Hawaii is currently undergoing an ocean heatwave, and the State of Hawaii Division of Aquatic Resources (Hawaii-DAR) has asked all ocean users to reduce secondary stress on coral reefs. This website identifies reefs that are bleaching so that ocean users can work together to reduce these secondary stresses and protect Hawaii's corals for the future.
     </h4>
 </div>
 <div class="black-background-div">
@@ -259,11 +264,11 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 
 <h4>
 <div class="grid-container">
-  <div class="grid-item">Hawaii-DAR has issued a request for ocean users to reduce secondary stress on Hawaiiʻs coral reefs.  This website provides real-time updates on the locations of probable coral bleaching caused by the 2019 ocean heatwave. Here, for the first time in the world, we combine citizen science, expert science, and satellites to track the effects of the ocean heatwave on coral reefs.
+  <div class="grid-item">Hawaii-DAR has issued a request for ocean users to reduce secondary stress on Hawaii's coral reefs.  This website provides real-time updates on the locations of probable coral bleaching caused by the 2019 ocean heatwave. Here, for the first time in the world, we combine citizen science, expert science, and satellites to track the effects of the ocean heatwave on coral reefs.
     </div>
   <div class="grid-item"><img src='./images/DSC_1967.jpg' alt="Coral Photo"  class = 'coral-photo'/></div>
 </div>
-  We need your help to make this work for the future of coral reefs in Hawaii. Our interactive map provides the worldʻs first direct link between ocean users and the first-ever satellite coral bleaching detection system. Powered by more than 100 Planet Lab satellites, we are monitoring all of Hawaiiʻs coral reefs every day, and we are provided a weekly update on bleaching that we detect from more than 300 miles up in Earth orbit.
+  We need your help to make this work for the future of coral reefs in Hawaii. Our interactive map provides the world's first direct link between ocean users and the first-ever satellite coral bleaching detection system. Powered by more than 100 Planet Lab satellites, we are monitoring all of Hawaii's coral reefs every day, and we are provided a weekly update on bleaching that we detect from more than 300 miles up in Earth orbit.
     
 
 <br /><br />
@@ -292,7 +297,7 @@ In parallel to our satellite monitoring, we have deployed our aircraft and field
    <h4>  
     1. Drag the pointer to the location on the map where you positively identified a bleaching event  
     <br />
-    2. Click 'Populate Coordinates' then 'Submit'
+    2. Click 'Report Bleaching' then 'Submit'
     </h4>
 
 <div id="map_canvas" class="center_map"></div>
@@ -301,7 +306,8 @@ In parallel to our satellite monitoring, we have deployed our aircraft and field
 <div id="formDiv" class="form">
   <br />
   <form>
-    Latitude (dd): <input type="text" id="latitude" class = 'latlong'>&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude"class = 'latlong'>
+    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Latitude (dd): <input type="text" id="latitude" class = 'latlong'>&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude"class = 'latlong'> </br>
+    Date (MM/DD/YYYY): <input type="text" id="submit_date" class = 'latlong'>&nbsp; &nbsp; Reef Expert ID: <input type="text" id="reef_expert"class = 'latlong'>
   </form>
   <button type="button" id="submission_button" class = 'submit-button'>Submit Bleaching Event</button>
 
@@ -309,22 +315,28 @@ In parallel to our satellite monitoring, we have deployed our aircraft and field
 
 
 <div id="post_submission_text" style="display: none;">
-<h4><span style="color: #ff0000;">This is a demo-only site. Thank you for helping to identify a new bleaching event.</span></h4>
+<h4><span style="color: #ff0000;">Thank you for helping to identify a new bleaching event!</span></h4>
 </div>
 </div>
 
 <!--- ######################### Action ######################### --->
 
 <div class = 'action-div'>
-        <h1>Reduce damage to coral reefs</h1>
+        <h1>Reduce Stress on Coral Reefs</h1>
         <img src='./images/scubaDiver2.png' alt="Scuba Diver"  class = 'dive-img'/>
-        <h3>       
-        Do not dive close to reefs
-            <br />
-        Wash off sunscreen before entering water
-            <br />
-            ...
-        </h3>
+        <h5>       
+	Avoid touching the reef while diving, snorkeling or swimming.
+	<br /><br />
+        Do not stand or rest on corals. 
+	<br /><br />
+	Use sunscreens with no oxybenzone or octinoxate.
+	<br /><br />
+	Boaters should use mooring buoys, or anchor only in sand areas and keep anchor chains off the reef.
+	<br /><br />
+	Fishers should reduce or stop their take of herbivores, such as parrotfish, surgeonfish, and sea urchins. Herbivores clear reefs of algae, which over-grow and kill corals during bleaching events.
+	<br /><br />
+	Taking extra precaution to prevent contaminants from getting to the ocean like dirt from neighboring earth work, chemical pollution from fertilizers, and soaps and detergents getting to storm drains.
+        </h5>
 </div>
 <!--- ######################### Footer --->
 
