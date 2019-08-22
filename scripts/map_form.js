@@ -28,10 +28,10 @@ var mapMaxZoom = 25;
     downloadDiv = new AddPointDiv(map);
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(downloadDiv.div);
 
-    var pointControlDiv = new OverlayDiv(map, 0, "Observed Bleaching");
+    var pointControlDiv = new OverlayDiv(map, 0, "Bleaching Observations");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
 
-    var satHeatControlDiv = new OverlayDiv(map, 1, "Satellite Detected Bleaching");
+    var satHeatControlDiv = new OverlayDiv(map, 1, "Satellite Update");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(satHeatControlDiv.div);
     controllist = [ pointControlDiv, satHeatControlDiv];
 
@@ -57,7 +57,7 @@ var mapMaxZoom = 25;
 		    nodata_marker.setPosition(map.getCenter());
 	});
 	nodata_info = new google.maps.InfoWindow({
-		    content: "No Bleaching Detected by Satellite Yet"
+		    content: "NO BLEACHING DETECTED BY OUR SATELLITES YET"
 		    });
 
 
