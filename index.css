@@ -74,10 +74,14 @@
     background-color:white;
   }
   
-  @media screen and (max-width: 960px) {
-    #coral-img-23 {
-      display: none;
-    }
+
+
+  
+  @media screen and (max-width: 768px) {
+  
+  #content-desktop {display: none;}
+
+  
   }
   
   .coral-img {
