@@ -248,15 +248,14 @@ function AddPointControl(controlDiv, map) {
 
   // Set CSS for the control interior.
   var controlText = document.createElement('div');
-  controlText.style.color = caogreen;
-  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-  controlText.style.fontSize = '16px';
+  controlText.style.fontFamily = 'Segoe UI';
+  controlText.style.fontSize = '24px';
   controlText.style.lineHeight = '28px';
   //controlText.style.paddingLeft = '10px';
   //controlText.style.paddingRight = '10px';
-  controlText.style.width = '200px';
-  controlText.style.paddingUp = '2px';
-  controlText.style.paddingDown = '2px';
+  controlText.style.width = '270px';
+  controlText.style.paddingUp = '20px';
+  controlText.style.paddingDown = '20px';
   controlText.innerHTML = 'Populate Coordinates';
   controlUI.appendChild(controlText);
   this.controlText = controlText;

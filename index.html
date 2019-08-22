@@ -28,14 +28,18 @@
   align-content: center;
   padding:10%;
   overflow:hidden;
-  align-content: center;
   text-align:center;
+}
+
+.title {
+    position:relative;
+    bottom:50;
 }
 
 h1 {
   text-align: center;
   font-family: 'Amatic SC', sans-serif;
-  font-size: 70pt;
+  font-size: 65pt;
   color: whitesmoke;
 }
 
@@ -43,13 +47,18 @@ h1 {
 h2 {
   text-align: center;
   font-family: 'Amatic SC', sans-serif;
-  font-size: 70pt;
+  font-size: 65pt;
   color: black;
 }
 
 h3 {
   font-family:'Segoe UI';
   font-size:40px;
+}
+h4 {
+  font-family:'Segoe UI';
+  font-size:32px;
+  text-align: center;
 }
 
 .report-button{
@@ -130,6 +139,42 @@ h3 {
     z-index: 10;
     position: static;
 }
+.form {
+    display: none; 
+    text-align: center;
+    color: black; 
+    font-size: 24px;
+    font-family: 'Segoe UI';
+}
+
+.latlong {
+    font-size:24px;
+    font-family:'Segoe UI';
+}
+
+.submit-button {
+    border-radius: 10px;
+  font-size: 30px;
+  background-color: #FF7F50;
+  color: black;
+  align-self: center;
+  display: inline-block;
+  padding: 2%;
+  text-align:center;
+  border-color:black;
+}
+
+
+.submit-button:hover {
+  background-color:white;
+  border-color:black;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 50px 100px;
+}
+
 </style>
 
 
@@ -145,21 +190,7 @@ h3 {
 <script type='text/javascript' src='scripts/map_form.js'></script>
 </head>
 
-<!--- ######################### Home Page ######################### --->
-<div id= 'home'>
-          <h1 >
-            Hawaiian Coral Bleaching
-          </h1>
-          <br />
-          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
-          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
-          <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
-          <br />
-          <div class = 'report-button'>
-              <b>Report Bleaching Event</b>
-          </div>
 
-</div>
 
 
 
@@ -172,7 +203,24 @@ data-bg-header="false" data-ext-responsive="true" data-header-resize="0" data-he
 data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize_coral_map()">
 
 
-
+<!--- ######################### Home Page ######################### --->
+<div id= 'home'>
+    <div class = 'title'>
+        <h1>
+          Hawaiian Coral Bleaching
+        </h1>
+        <br />
+        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+        <br />
+        <a href = '#report-bleaching'>
+        <div class = 'report-button'>
+            <b>Report Bleaching Event</b>
+        </div>
+      </a>
+    </div>
+</div>
 
 <!--- ######################### Background ######################### --->
 <div class="white-background-div">
@@ -208,59 +256,36 @@ MORE INFO
 
 
 
-<!--- ######################### Location ######################### --->
-<div class="white-background-div">
-   <h2>Location of Confirmed Bleaching Events</h2>
+<!--- ######################### Report ######################### --->
+<div class="white-background-div" id = 'report-bleaching'>
+   <h2>Report a Bleaching Event</h2>
+
+   <h4>  
+    1. Drag the pointer to the location on the map where you positively identified a bleaching event  
+    <br />
+    2. Click 'Populate Coordinates' then 'Submit'
+    </h4>
 
 <div id="map_canvas" class="center_map"></div>
 
 
-</div>
-
-
-<!--- ######################### Report ######################### --->
-
-
-
-
-<div class = 'black-background-div'>
-<div class="page page-id-2656 page-template-default  not-admin wpb-js-composer js-comp-ver-4.3.5 vc_responsive" 
-data-header-inherit-rc="false" data-header-search="true" data-animated-anchors="false" data-ajax-transitions="false" 
-data-full-width-header="false" data-slide-out-widget-area="false" data-loading-animation="none" 
-data-bg-header="false" data-ext-responsive="true" data-header-resize="0" data-header-color="light"  
-data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize_coral_map()">
-
-
-
-<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ffffff; font-size: 28px;">Report a Bleaching Event</span></h1>
-
-<p
-<div id="map_canvas" class="center_map"> </div>
-<p class="text_descriptions"> Thanks for helping to identify a new bleaching event.  To get started, zoom to the appropriate location on the map and drag the pointer to the area of interest.  Next click 'Populate Coordinates'</p>
-
-
-
-
 <div id="formDiv" class="form">
-  
+  <br />
   <form>
-    Latitude (dd): <input type="text" id="latitude">&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude">
+    Latitude (dd): <input type="text" id="latitude" class = 'latlong'>&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude"class = 'latlong'>
   </form>
-  <button type="button" id="submission_button">Submit Bleaching Event</button>
+  <button type="button" id="submission_button" class = 'submit-button'>Submit Bleaching Event</button>
 
 </div>
 
-<div> <p>&nbsp;</p> <div>
 
 <div id="post_submission_text" style="display: none;">
-<h1 style="text-align: center; font-family: Verdana;"><span style="color: #ff0000; font-size: 16px;">This is a demo-only site.</span></h1>
-</div>
+<h4><span style="color: #ff0000;">This is a demo-only site. Thank you for helping to identify a new bleaching event.</span></h4>
 </div>
 
+
 <!--- ######################### Footer --->
-<div> <p>&nbsp;</p> <div>
-<div> <p>&nbsp;</p> <div>
-<div class="container">
+        <br /><br /><br /><br /><br /><br />
         <div style="float: left; width: 33.3%;">
         <img style="display: block; margin: auto; height: 100px; background-color: white; padding: 10px" src="images/GDCS logo.png" />
         </div>
@@ -275,10 +300,9 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="./papaparse.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery-3.2.1.js') }}">\x3C/script>')</script>
 
-</body>
+
 
 
 </body>
