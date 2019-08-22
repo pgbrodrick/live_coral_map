@@ -279,7 +279,7 @@ function show_form(){
 
 
 function launch_record_script(lat, lng) {
-   $.getJSON( '/_record_image',{
+   $.getJSON( '/_record_point',{
      lat: lat,
      lng: lng,
  }, function (data) {
