@@ -7,6 +7,8 @@ var map;
 var markers = [];
 var infowindow;
 var added_point;
+var nodata_marker;
+var nodata_info;
 
 var caogreen = 'rgb(0,152,58)';
 
@@ -26,6 +28,14 @@ var mapMaxZoom = 25;
     downloadDiv = new AddPointDiv(map);
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(downloadDiv.div);
 
+    var pointControlDiv = new OverlayDiv(map, 0, "Observed Bleaching");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
+
+    var satHeatControlDiv = new OverlayDiv(map, 1, "Satellite Detected Bleaching");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(satHeatControlDiv.div);
+    controllist = [ pointControlDiv, satHeatControlDiv];
+
+
     launch_read_script();
 
     infowindow = new google.maps.InfoWindow();
@@ -36,6 +46,20 @@ var mapMaxZoom = 25;
     });
 
 
+    nodata_marker = new google.maps.Marker({
+	        position: map.getCenter(),
+	        map: map,
+	        visible: false
+    });
+
+	/* Center change handler to always center the marker */
+	map.addListener('center_changed', function() {
+		    nodata_marker.setPosition(map.getCenter());
+	});
+	nodata_info = new google.maps.InfoWindow({
+		    content: "No Bleaching Detected by Satellite Yet"
+		    });
+
 
     // Create output marker
     added_point = new google.maps.Marker({
@@ -43,11 +67,12 @@ var mapMaxZoom = 25;
      position: new google.maps.LatLng(19.0,-156),
      map: map
     });
+//
 
     added_point.setMap(map);
   	document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
-
+    selectControl(0);
 
 }
 
@@ -77,13 +102,26 @@ function add_marker(latlong, content_str, map, infowindow){
 function selectControl(item) {
     clearMap();
     if (item == 0) {pointOverlay();}
-    else if (item == 1) {pointHeatOverlay();}
-    else if (item == 2) {satHeatOverlay();}
+    else if (item == 1) {satHeatOverlay();}
 
     for (i = 0; i < controllist.length; i++ ) {
       controllist[i].deselect();
     }
     controllist[item].select();
+}
+
+function clearMap(){
+	nodata_info.close(map, nodata_marker);
+}
+
+function pointOverlay(){
+}
+
+function pointHeatOverlay(){
+}
+
+function satHeatOverlay(){
+	nodata_info.open(map, nodata_marker);
 }
 
 
