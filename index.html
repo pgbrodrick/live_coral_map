@@ -10,211 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
 
-<style>
-.App {
-  text-align: center;
-}
-
-#home {
-  background: linear-gradient(to right, rgba(0,0,0,.8), rgba(0, 0, 0, 0.6)), url("./images/divephoto_papabay_2018.jpg");
-  height:auto;
-  background-position: absolute;
-  max-width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin:0;
-  text-align:center;
-  align-content: center;
-  padding:10%;
-  overflow:hidden;
-  text-align:center;
-}
-
-.title {
-    position:relative;
-    bottom:50;
-}
-
-h1 {
-  text-align: center;
-  font-family: 'Amatic SC', sans-serif;
-  font-size: 65pt;
-  color: whitesmoke;
-}
-
-
-h2 {
-  text-align: center;
-  font-family: 'Amatic SC', sans-serif;
-  font-size: 65pt;
-  color: black;
-}
-
-h3 {
-  font-family:'Cambria';
-  font-size:40px;
-}
-h4 {
-  font-family:'Cambria';
-  font-size:32px;
-  text-align: left;
-  font-weight:normal; 
-}
-h5 {
-  font-family:'Cambria';
-  font-size:30px;
-  text-align: left;
-  font-weight:normal; 
-}
-
-.report-button{
-  border-radius: 10px;
-  font-size: 40px;
-  background-color: #FF7F50;
-  color: black;
-  align-self: center;
-  display: inline-block;
-  padding: 5%;
-  text-align:center;
-
-
-}
-
-.report-button:hover {
-  background-color:white;
-}
-
-
-
-.coral-img {
-  width: 150px;
-}
-
-.dive-img {
-  width: 350px;
-  float:left;
-}
-
-.coral-photo {
-  width: 100%;
-
-}
-
-.white-background-div {
-  padding:100px;
-  padding-top:150px;
-  background-color:white;
-  color: solid black;
-  overflow:hidden;
-  max-width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.black-background-div {
-  padding:100px;
-  padding-top:150px;
-  background-color:black;
-  color: white;
-  overflow:hidden;
-  max-width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-
-.action-div {
-  background: linear-gradient(to right, rgba(0,0,0,.8), rgba(0, 0, 0, 0.6)), url("./images/DSC_2033.jpg");
-  height:auto;
-  background-position: absolute;
-  max-width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin:0;
-  text-align:center;
-  align-content: center;
-  padding:10%;
-  overflow:hidden;
-  color:white;
-}
-
-.center_map {
-    margin: auto;
-    width: 80%;
-    height: 80%;
-    z-index: 10;
-    position: static;
-}
-.form {
-    display: none; 
-    text-align: center;
-    color: black; 
-    font-size: 24px;
-    font-family: 'Segoe UI';
-}
-
-.latlong {
-    font-size:24px;
-    font-family:'Segoe UI';
-}
-
-.submit-button {
-    border-radius: 10px;
-  font-size: 30px;
-  background-color: #FF7F50;
-  color: black;
-  align-self: center;
-  display: inline-block;
-  padding: 2%;
-  text-align:center;
-  border-color:black;
-}
-
-
-.submit-button:hover {
-  background-color:white;
-  border-color:black;
-}
-
-.grid-container {
-  display: grid;
-  grid-gap: 2px 10px;
-  grid-template-columns: auto auto;
-  padding: 10px;
-}
-
-.grid-item {
-    padding-bottom:10px;
-  font-size: 30px;
-  text-align: left;
-}
-
-.grid-container-logo {
-  display: grid;
-  grid-gap: 2px;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
-}
-
-.grid-item-logo {
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-
-</style>
 
 
 
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
 <script type='text/javascript' src='scripts/map_form.js'></script>
+
+<link rel = 'stylesheet' href = './index.css'>
 </head>
 
 
@@ -233,20 +38,35 @@ data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize
 <!--- ######################### Home Page ######################### --->
 <div id= 'home'>
     <div class = 'title'>
-        <h1>
-            Hawaii Coral Bleaching Tracker
-        </h1>
-        
-        <br />
-        <a href = '#report-bleaching'>
-        <div class = 'report-button'>
-            <b>Report Bleaching Event</b>
+        <div class="row">
+                <div class="col s12">
+                        <h1>
+                            Hawaii Coral Bleaching Tracker
+                        </h1>
+                </div>
+                <div class="col s12">
+                        <br />
+                        <a href = '#report-bleaching'>
+                        <div class = 'report-button'>
+                            <b>Report Bleaching Event</b>
+                        </div>
+                      </a>
+                </div>
         </div>
-      </a>
-      <br /> <br /><br />
-        <img src='./images/coral.png' alt="Coral"  class = 'coral-img'/>
-        <img src='./images/coral3.png' alt="Coral"  class = 'coral-img'/>
-        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+        <div class="row" >
+                <div class="col s12 m4 l4 push-l2">
+                        <img src='./images/coral.png' alt="Coral"  class = 'coral-img'/>
+                </div>
+                <div class="col s12 m4 l4">
+                        <img src='./images/coral3.png' alt="Coral"  class = 'coral-img' id = coral-img-23/>
+                </div>
+                <div class="col s12 m4 l4 pull-l2">
+                        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img'/>
+                </div>
+            </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 
