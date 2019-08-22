@@ -97,7 +97,6 @@ var mapMaxZoom = 25;
 }
 
 
-
 function add_marker(latlong, content_str, map, infowindow){
     var marker = new google.maps.Marker({
          position: latlong,
@@ -275,7 +274,27 @@ function show_form(){
   document.getElementById("latitude").value = added_point.getPosition().lat();
   document.getElementById("longitude").value = added_point.getPosition().lng();
   document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+  launch_record_script(added_point.getPosition().lat(), added_point.getPosition().lng())
 }
+
+
+function launch_record_script(lat, lng) {
+   $.getJSON( '/_record_image',{
+     lat: lat,
+     lng: lng,
+ }, function (data) {
+    if (data.error_string == '') {
+      alert('Your point has been added!  Please be patient, it will display on the map shortly.');
+    }
+    else {
+      alert('Unfortunately, your data point is outside of the bounds of live coral events.  Please re-check the location')
+    }
+
+ });
+}
+
+
+
 
 function submit_form() {
     document.getElementById("post_submission_text").style.display="block";
