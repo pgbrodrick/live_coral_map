@@ -1,0 +1,139 @@
+/* Fonts */
+/* Reset base font size */
+html {
+    font-size: 16px;
+}
+h1 {
+    color: rgb(15, 60, 85);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 3em;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+h2 {
+    color: rgb(15, 60, 85);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.75em;
+    line-height: 1.5;
+}
+h3 {
+    color: rgb(15, 60, 85);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: .9375em;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+}
+h4 {
+    color: rgb(117, 117, 117);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+h5 {
+    color: rgb(117, 117, 117);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.5em;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+}
+p, ol {
+    color: rgb(117, 117, 117);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1.5;
+}
+b {
+    font-weight: 600;
+}
+.text-light {
+    font-weight: 200;
+}
+
+/* Navigation Bar */
+
+.nav-wrapper {
+    background: rgb(16, 60, 85);
+}
+
+/* Body */
+body {
+    padding-bottom: 20rem;  /* Same height as footer, nothing cut off */
+    background: rgb(240, 239, 234);  /* light brown */
+}
+
+/* Links */
+a {
+    color: rgb(16, 60, 85);
+    text-decoration: none;
+    font-family: 'Barlow', sans-serif !important;
+}
+p > a {
+    color: rgb(33, 150, 185);
+    font-weight: 500
+}
+
+/* Buttons */
+button, input {
+    font-family: 'Barlow', sans-serif;
+}
+.btn-large {
+    background: rgb(16, 60, 85);
+    border-color: rgb(16, 60, 85);
+}
+.btn-large:hover {
+    background: rgb(33, 150, 185);
+    border-color: rgb(33, 150, 185);
+}
+.btn-disabled {
+    background-color: rgb(238, 238, 238);
+}
+
+/* Forms */
+.form-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    box-shadow: 0px 0px 5px rgb(117, 117, 117);
+}
+.form-heading-container {
+    background: linear-gradient(-90deg, rgb(242, 197, 118), rgb(242, 101, 67), rgb(240, 101, 67));  /* dark orange to light orange */
+}
+.form-heading {
+    font-size: 1.1rem;
+    font-weight: 200;
+    color: rgb(255, 255, 255);
+    margin-top: 10px;
+    padding-left: 2rem;
+}
+.form-content-container {
+    padding: 2rem;
+}
+.form-group ~ .form-group {  /* Put space between form groups with preceeding form groups */
+    margin-top: 30px;
+}
+label {
+    color: rgb(117, 117, 117);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1em;
+}
+input[type=text] {  /* !important overrides bootstrap settings */
+    box-shadow: 0px 1px rgb(225, 225, 225) !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+}
