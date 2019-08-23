@@ -139,6 +139,9 @@ input[type=text] {  /* !important overrides bootstrap settings */
 }
 
 /* Map */
+#mapform {
+    display: None;
+}
 .center_map {
     margin: auto;
     width: 95%;

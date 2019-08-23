@@ -278,7 +278,7 @@ function update_latlong(new_lat,new_lng){
 
 
 function show_form(){
-  var x = document.getElementById("formDiv");
+  var x = document.getElementById("mapform");
   x.style.display = "block";
 
   update_latlong(added_point.getPosition().lat(),added_point.getPosition().lng());
