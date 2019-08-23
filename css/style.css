@@ -137,3 +137,13 @@ input[type=text] {  /* !important overrides bootstrap settings */
     border-right: none !important;
     border-radius: 0px !important;
 }
+
+/* Map */
+.center_map {
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    z-index: 10;
+    position: static;
+}
+

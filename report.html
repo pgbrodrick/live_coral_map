@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="author" content="HawaiiCoral.org">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 
   <link rel='stylesheet' href="css/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -15,8 +15,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
+  <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
   <script type='text/javascript' src='scripts/map_form.js'></script>
 </head>
+
 
 <body class="page page-id-2656 page-template-default  not-admin wpb-js-composer js-comp-ver-4.3.5 vc_responsive"
       data-header-inherit-rc="false" data-header-search="true" data-animated-anchors="false" data-ajax-transitions="false"
@@ -130,5 +132,8 @@
 </div>
 
 </body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery-3.2.1.js') }}">\x3C/script>')</script>
 
 </html>
