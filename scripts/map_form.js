@@ -16,11 +16,11 @@ var caogreen = 'rgb(0,152,58)';
 
 function initialize_coral_map() {
 
-var startBounds = new google.maps.LatLngBounds(
+    var startBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(18.5,-160.5),
     new google.maps.LatLng(22.0,-154.5));
-var mapMinZoom = 7;
-var mapMaxZoom = 25;
+    var mapMinZoom = 7;
+    var mapMaxZoom = 25;
 
     map = new google.maps.Map(document.getElementById("map_canvas"),{maxZoom: mapMaxZoom, minZoom:mapMinZoom, mapTypeId:'hybrid'});
 
@@ -74,6 +74,24 @@ var mapMaxZoom = 25;
 
     added_point.setMap(map);
     google.maps.event.addListener(added_point,'dragend',function(){update_latlong(added_point.getPosition().lat(),added_point.getPosition().lng())});
+    google.maps.event.addListener(map, 'idle', function() {
+             var bounds = map.getBounds();
+             var ne = bounds.getNorthEast();
+             var sw = bounds.getSouthWest();
+             //do whatever you want with those bounds
+
+	     var mlat = added_point.getPosition().lat();
+	     var mlng = added_point.getPosition().lng();
+	     var newlat = mlat;
+	     var newlng = mlng;
+	     if (mlat > ne.lat() || mlat < sw.lat()) {	newlat = sw.lat() + (ne.lat() - sw.lat())/2; }
+	     if (mlng > ne.lng() || mlng < sw.lng()) {	newlng = sw.lng() + (ne.lng() - sw.lng())/2; }
+	     if (newlat != mlat || newlng !=mlng) {
+		added_point.setPosition(new google.maps.LatLng(newlat,newlng));
+	     }
+    });
+
+
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
     selectControl(0);
