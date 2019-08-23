@@ -22,7 +22,7 @@
       position:relative;
       bottom:50;
   }
-  
+
   h1 {
     text-align: center;
     font-family: 'Amatic SC', sans-serif !important; 
@@ -186,7 +186,7 @@
     grid-template-columns: auto auto;
     padding: 10px;
   }
-  
+
   .grid-item {
       padding-bottom:10px;
     font-size: 30px;
@@ -199,7 +199,7 @@
     grid-template-columns: auto auto auto;
     padding: 10px;
   }
-  
+
   .grid-item-logo {
     padding: 20px;
     font-size: 30px;

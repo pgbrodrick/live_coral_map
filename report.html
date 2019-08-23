@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
+  <script type='text/javascript' src='scripts/map_form.js'></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel = 'stylesheet' href = './index.css'>
+</head>
+
+
+<body class="page page-id-2656 page-template-default  not-admin wpb-js-composer js-comp-ver-4.3.5 vc_responsive"
+      data-header-inherit-rc="false" data-header-search="true" data-animated-anchors="false" data-ajax-transitions="false"
+      data-full-width-header="false" data-slide-out-widget-area="false" data-loading-animation="none"
+      data-bg-header="false" data-ext-responsive="true" data-header-resize="0" data-header-color="light"
+      data-smooth-scrolling="1" data-responsive="1" bgcolor=#000000 onload="initialize_coral_map()">
+
+<!--- ######################### Navbar ######################### --->
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
+      <ul class="left hide-on-med-and-down">
+        <li><span style = 'color:white'><a href="index.html"><i class="fas fa-fish"></i></a></span></li>
+        <li>Hawaii Coral Bleaching Tracker</li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html#bleaching">What is bleaching?</a></li>
+        <li><a href="index.html#help">How to help</a></li>
+        <li><a href="report.html">Report bleaching</a></li>
+        <li><a href="detail.html">Learn More</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile">
+    <li><a href="index.html#bleaching">What is bleaching?</a></li>
+    <li><a href="index.html#help">How to help</a></li>
+    <li><a href="report.html">Report bleaching</a></li>
+    <li><a href="detail.html">Learn More</a></li>
+  </ul>
+</div>
+
+
+<!--- ######################### Home Page ######################### --->
+<div id= 'home'>
+  <div class = 'title'>
+    <div class="row">
+      <div class="col s12">
+        <h1>
+          Hawaii Coral Bleaching Tracker
+        </h1>
+      </div>
+      <div class="col s12">
+        <br />
+        <a href = '#report-bleaching'>
+          <div class = 'report-button'>
+            <b>Report Bleaching Event</b>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col m4 l4 push-l2">
+        <img src='./images/coral.png' alt="Coral"  class = 'coral-img' id = 'content-desktop'/>
+      </div>
+      <div class="col m4 l4">
+        <img src='./images/coral3.png' alt="Coral"  class = 'coral-img' id = 'content-desktop'/>
+      </div>
+      <div class="col s12  m4 l4 pull-l2">
+        <img src='./images/coral2.png' alt="Coral"  class = 'coral-img' id = 'content-all'/>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+  <!--- ######################### Report ######################### --->
+  <div class="white-background-div" id = 'report-bleaching'>
+    <h2>Report a Bleaching Event</h2>
+
+    <h4>
+      1. Drag the pointer to the location on the map where you positively identified a bleaching event
+      <br />
+      2. Click 'Report Bleaching' then 'Submit'
+    </h4>
+
+    <div id="map_canvas" class="center_map"></div>
+
+
+    <div id="formDiv" class="form">
+      <br />
+      <form>
+        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Latitude (dd): <input type="text" id="latitude" class = 'latlong'>&nbsp; &nbsp; Longitude (dd): <input type="text" id="longitude"class = 'latlong'> </br>
+        Date (MM/DD/YYYY): <input type="text" id="submit_date" class = 'latlong'>&nbsp; &nbsp; Reef Expert ID: <input type="text" id="reef_expert"class = 'latlong'>
+      </form>
+      <button type="button" id="submission_button" class = 'submit-button'>Submit Bleaching Event</button>
+
+    </div>
+
+
+    <div id="post_submission_text" style="display: none;">
+      <h4><span style="color: #ff0000;">Thank you for helping to identify a new bleaching event!</span></h4>
+    </div>
+  </div>
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery-3.2.1.js') }}">\x3C/script>')</script>
+
+
+
+
+</body>
+</html>
