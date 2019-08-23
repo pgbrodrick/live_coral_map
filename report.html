@@ -86,7 +86,38 @@
 
 
 <!--- ######################### Report ######################### --->
+<div class="white-background-div" id = 'report-bleaching'>
+  <h2>Report a Bleaching Event</h2>
 
+  <h4>
+    1. Drag the pointer to the location on the map where you positively identified a bleaching event
+    <br />
+    2. Click 'Report Bleaching' then 'Submit'
+  </h4>
+
+  <div id="map_canvas" class="center_map"></div>
+
+
+  <div id="formDiv" class="form">
+    <br />
+    <form>
+      Latitude (dd): <input type="text" id="latitude" class = 'latlong'>
+      Longitude (dd): <input type="text" id="longitude"class = 'latlong'>
+      Date (MM/DD/YYYY): <input type="text" id="submit_date" class = 'latlong'>
+      Reef Expert ID: <input type="text" id="reef_expert"class = 'latlong'>
+    </form>
+    <button type="button" id="submission_button" class = 'submit-button'>Submit Bleaching Event</button>
+
+  </div>
+
+
+  <div id="post_submission_text" style="display: none;">
+    <h4><span style="color: #ff0000; text-align: center;">Thank you for helping to identify a new bleaching event!</span></h4>
+  </div>
+</div>
+
+
+<!--
 <div class="container">
   <div class="row" id='report-bleaching'>
     <div id="map_canvas" class="center_map"></div>
@@ -128,11 +159,15 @@
       <h4><span style="color: #ff0000;">Thank you for helping to identify a new bleaching event!</span></h4>
     </div>
   </div>
-
+-->
 </div>
 
 </body>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery-3.2.1.js') }}">\x3C/script>')</script>
+<!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+-->
 
 </html>
