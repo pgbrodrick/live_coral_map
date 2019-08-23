@@ -1,0 +1,18 @@
+/* Page */
+body {
+    padding-bottom: 10rem;
+}
+
+
+/* Navigation Bar */
+
+.nav-wrapper {
+    background-color: #64b5f6;
+}
+
+
+/* Buttons */
+
+.btn-large {
+    background-color: #64b5f6;
+}
