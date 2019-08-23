@@ -1,28 +1,20 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <title>Hawaii Coral Bleaching Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
-  <script type='text/javascript' src='scripts/map_form.js'></script>
+  <link rel='stylesheet' href='index.css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel = 'stylesheet' href = './index.css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
+<body>
 
-<body class="page page-id-2656 page-template-default  not-admin wpb-js-composer js-comp-ver-4.3.5 vc_responsive"
-data-header-inherit-rc="false" data-header-search="true" data-animated-anchors="false" data-ajax-transitions="false" 
-data-full-width-header="false" data-slide-out-widget-area="false" data-loading-animation="none" 
-data-bg-header="false" data-ext-responsive="true" data-header-resize="0" data-header-color="light"  
-data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
-
-  <!--- ######################### Navbar ######################### --->
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
+        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">HawaiiCoral</i></a>
         <ul class="left hide-on-med-and-down">
           <li><span style = 'color:white'><a href="index.html"><i class="fas fa-fish"></i></a></span></li>
           <li>Hawaii Coral Bleaching Tracker</li>
@@ -49,7 +41,7 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
   <div class='container'>
     <div class="row">
       <div class="col s12">
-        <h1>Hawaii Coral Bleaching Tracker</h1>
+        <h1 class="center-align">Hawaii Coral Bleaching Tracker</h1>
       </div>
     </div>
   </div>
@@ -58,10 +50,10 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
 
   <div class="container">
     <div class="row valign-wrapper">
-      <div class="col s3 offset-s3 center-align">
+      <div class="col s6 l5 offset-l1 center-align">
         <a class="waves-effect waves-light btn-large" href="#help">How Can I Help?</a></h2>
       </div>
-      <div class="col s3 offset-s0 center-align">
+      <div class="col s6 l5 center-align">
         <a class="waves-effect waves-light btn-large" href="report.html">Report Bleaching</a></h2>
       </div>
     </div>
@@ -73,8 +65,8 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
     <div class="row">
       <div class="col s12">
         <h2>What is coral bleaching?</h2>
-        <p>Our planet is warming at an alarming rate due to climate change, with major consequences for our most diverse and fragile ecosystems. In our oceans, warmer water temperatures can result in coral bleaching where corals expel the algae from their tissues and turn white. This can lead to coral death.</p>
-        <p>We can lessen the impact and possibly save corals by reducing "secondary stressors" such as fishing and water pollution. Even minor changes can make a big difference in how quickly our reefs recover, ensuring healthier coastal environments for Hawaii's beautiful wildlife and people.</p>
+        <p class="flow-text">Our planet is warming at an alarming rate due to climate change, with major consequences for our most diverse and fragile ecosystems. In our oceans, warmer water temperatures can result in coral bleaching where corals expel the algae from their tissues and turn white. This can lead to coral death.</p>
+        <p class="flow-text">We can lessen the impact and possibly save corals by reducing "secondary stressors" such as fishing and water pollution. Even minor changes can make a big difference in how quickly our reefs recover, ensuring healthier coastal environments for Hawaii's beautiful wildlife and people.</p>
       </div>
     </div>
   </div>
@@ -93,8 +85,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Corals Like Their Space</h3>
-              <p>Corals are very sensitive to being touched and can break easily, and fish are nervous around potential predators and feel more comfortable when they have space. Next time you're on a reef, give both fish and corals more room to reduce animal stress!</p>
+              <h3 class="card-title">Corals Like Their Space</h3>
+              <div class="divider"></div>
+              <p class="flow-text">Corals are very sensitive to being touched and can break easily, and fish are nervous around potential predators and feel more comfortable when they have space. Next time you're on a reef, give both fish and corals more room to reduce animal stress!</p>
             </div>
           </div>
         </div>
@@ -106,8 +99,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Stand on the Sand</h3>
-              <p>Want to dive down for a photo or just stand up to take a rest? Make sure you touch down on sand and not on the reef. It's more comfortable for your feet and keeps the reef intact and undamaged!</p>
+              <h3 class="card-title">Stand on the Sand</h3>
+              <div class="divider"></div>
+              <p class="flow-text">Want to dive down for a photo or just stand up to take a rest? Make sure you touch down on sand and not on the reef. It's more comfortable for your feet and keeps the reef intact and undamaged!</p>
             </div>
           </div>
         </div>
@@ -119,8 +113,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Use Coral-Friendly Sunscreen</h3>
-              <p>Reef-safe or mineral (e.g. zinc or titanium oxide) sunscreens are better for you and for corals! Sunscreens containing oxybenzone and octinoxate wash off your skin and dissolve into the water where they can harm corals. Look for sunscreens that don't contain these chemicals.</p>
+              <h3 class="card-title">Use Coral-Friendly Sunscreen</h3>
+              <div class="divider"></div>
+              <p class="flow-text">Reef-safe or mineral (e.g. zinc or titanium oxide) sunscreens are better for you and for corals! Sunscreens containing oxybenzone and octinoxate wash off your skin and dissolve into the water where they can harm corals. Look for sunscreens that don't contain these chemicals.</p>
             </div>
           </div>
         </div>
@@ -132,8 +127,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Anchor Away From the Reef</h3>
-              <p>An anchor can pack a wallop on the reef and it can scare fish away! If you're out on your boat for a day of fishing or going for a snorkel or dive on the reef, look out for a diving mooring to tie onto or drop your anchor in a sandy patch and never on the reef.</p>
+              <h3 class="card-title">Anchor Away From the Reef</h3>
+              <div class="divider"></div>
+              <p class="flow-text">An anchor can pack a wallop on the reef and it can scare fish away! If you're out on your boat for a day of fishing or going for a snorkel or dive on the reef, look out for a diving mooring to tie onto or drop your anchor in a sandy patch and never on the reef.</p>
             </div>
           </div>
         </div>
@@ -145,8 +141,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Let Fish Protect Reefs</h3>
-              <p>Herbivorous fish, such as parrotfish and surgeonfish, eat the algae that can cover and suffocate corals leading to coral death. When you're out for a day of fishing, try to limit harvest of these fish so they can keep on doing their important jobs.</p>
+              <h3 class="card-title">Let Fish Protect Reefs</h3>
+              <div class="divider"></div>
+              <p class="flow-text">Herbivorous fish, such as parrotfish and surgeonfish, eat the algae that can cover and suffocate corals leading to coral death. When you're out for a day of fishing, try to limit harvest of these fish so they can keep on doing their important jobs.</p>
             </div>
           </div>
         </div>
@@ -158,8 +155,9 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <h3 class=“card-title”>Be Careful with Pollutants Around Water</h3>
-              <p>Anything that goes down the drain or lies free on the ground will eventually make its way to the ocean. Loose dirt and chemicals from fertilizers, detergents, etc. pollute the water and make it hard for coral to survive and thrive. Taking care during to not dump anything on the ground or down the drain will keep the ocean cleaner so that you can enjoy swimming in it and observing corals longer.</p>
+              <h3 class="card-title">Be Careful with Pollutants Around Water</h3>
+              <div class="divider"></div>
+              <p class="flow-text">Anything that goes down the drain or lies free on the ground will eventually make its way to the ocean. Loose dirt and chemicals from fertilizers, detergents, etc. pollute the water and make it hard for coral to survive and thrive. Taking care during to not dump anything on the ground or down the drain will keep the ocean cleaner so that you can enjoy swimming in it and observing corals longer.</p>
             </div>
           </div>
         </div>
@@ -171,10 +169,10 @@ data-smooth-scrolling="1" data-responsive="1" onload="initialize_coral_map()">
 
   <div class="container">
     <div class="row valign-wrapper">
-      <div class="col s3 offset-s3 center-align">
+      <div class="col s6 l5 offset-l1 center-align">
         <a class="waves-effect waves-light btn-large" href="report.html">Report Bleaching</a></h2>
       </div>
-      <div class="col s3 offset-s0 center-align">
+      <div class="col s6 l5 center-align">
         <a class="waves-effect waves-light btn-large" href="detail.html">Learn More</a></h2>
       </div>
     </div>
