@@ -147,3 +147,14 @@ input[type=text] {  /* !important overrides bootstrap settings */
     position: static;
 }
 
+/* Header */
+.parallax-container {
+    height: 500px
+}
+.parallax-container h1 {
+    color: white;
+}
+.parallax img {
+    padding-top: 20rem;
+}
+
