@@ -155,11 +155,13 @@
       color: black; 
       font-size: 24px;
       font-family: 'Segoe UI';
+      width: 100%;
   }
   
   .latlong {
       font-size:24px;
       font-family:'Segoe UI';
+      text-align: center;
   }
   
   .submit-button {
