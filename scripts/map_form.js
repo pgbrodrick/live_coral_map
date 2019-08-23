@@ -273,6 +273,8 @@ function AddPointControl(controlDiv, map) {
 function update_latlong(new_lat,new_lng){
   document.getElementById("latitude").value = new_lat;
   document.getElementById("longitude").value = new_lng;
+  document.getElementById("reef_expert").value = 'None';
+  M.updateTextFields()
 }
 
 
@@ -295,6 +297,7 @@ function show_form(){
   } 
   var today = mm + '/' + dd + '/' + yyyy;
   document.getElementById('submit_date').value = today;
+  M.updateTextFields()
   document.getElementById("reef_expert").value = '(optional)'
 }
 
