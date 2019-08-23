@@ -141,8 +141,8 @@ input[type=text] {  /* !important overrides bootstrap settings */
 /* Map */
 .center_map {
     margin: auto;
-    width: 80%;
-    height: 80%;
+    width: 95%;
+    height: 95%;
     z-index: 10;
     position: static;
 }
