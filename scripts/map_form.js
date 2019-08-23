@@ -9,6 +9,7 @@ var infowindow;
 var added_point;
 var nodata_marker;
 var nodata_info;
+var pointHeatmap;
 
 var caogreen = 'rgb(0,152,58)';
 
@@ -34,6 +35,8 @@ var mapMaxZoom = 25;
     var satHeatControlDiv = new OverlayDiv(map, 1, "Satellite Update");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(satHeatControlDiv.div);
     controllist = [ pointControlDiv, satHeatControlDiv];
+
+    pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
 
 
     launch_read_script();
@@ -64,22 +67,24 @@ var mapMaxZoom = 25;
     // Create output marker
     added_point = new google.maps.Marker({
      draggable:true,
-     position: new google.maps.LatLng(19.0,-156),
+     position: new google.maps.LatLng(20.0,-158),
      map: map
     });
 //
 
     added_point.setMap(map);
-  	document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+    google.maps.event.addListener(added_point,'dragend',function(){update_latlong(added_point.getPosition().lat(),added_point.getPosition().lng())});
+    document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
     selectControl(0);
-
 }
 
 
-function add_marker(latlong, content_str, map, infowindow){
+function add_marker(point_info, map, infowindow){
+
+    if (point_info.recorder == 'expert') {
     var marker = new google.maps.Marker({
-         position: latlong,
+         position: point_info.position,
          icon: {
             path: google.maps.SymbolPath.CIRCLE,
             scale: 2,
@@ -90,11 +95,12 @@ function add_marker(latlong, content_str, map, infowindow){
 
        google.maps.event.addListener(marker, 'click', function() {
 
-       var iwContent =  content_str;
-         infowindow.setContent(content_str);
+       var iwContent =  'Date Recorded: ' + point_info.dateinfo;
+         infowindow.setContent(iwContent);
          infowindow.open(map, marker);
         });
      markers.push(marker)
+    }
 }
 
 
@@ -112,9 +118,12 @@ function selectControl(item) {
 
 function clearMap(){
 	nodata_info.close(map, nodata_marker);
+	pointHeatmap.set('opacity',0)
 }
 
 function pointOverlay(){
+	pointHeatmap.set('opacity',1)
+	added_point.set('visible',true);
 }
 
 function pointHeatOverlay(){
@@ -122,6 +131,7 @@ function pointHeatOverlay(){
 
 function satHeatOverlay(){
 	nodata_info.open(map, nodata_marker);
+	added_point.set('visible',false);
 }
 
 
@@ -256,16 +266,21 @@ function AddPointControl(controlDiv, map) {
 
   // Setup the click event listener
   this.controlUI.addEventListener('click', function() {
-    show_form()
+    show_form();
   });
 }
+
+function update_latlong(new_lat,new_lng){
+  document.getElementById("latitude").value = new_lat;
+  document.getElementById("longitude").value = new_lng;
+}
+
 
 function show_form(){
   var x = document.getElementById("formDiv");
   x.style.display = "block";
 
-  document.getElementById("latitude").value = added_point.getPosition().lat();
-  document.getElementById("longitude").value = added_point.getPosition().lng();
+  update_latlong(added_point.getPosition().lat(),added_point.getPosition().lng());
 
   var today = new Date();
   var dd = today.getDate();
@@ -280,6 +295,7 @@ function show_form(){
   } 
   var today = mm + '/' + dd + '/' + yyyy;
   document.getElementById('submit_date').value = today;
+  document.getElementById("reef_expert").value = '(optional)'
 }
 
 
@@ -290,11 +306,11 @@ function launch_record_script(lat, lng, submit_date, submit_expert) {
      submit_date: submit_date,
      submit_expert: submit_expert,
  }, function (data) {
-    if (data.error_string == 'out_of_bounds'){
-      alert('Unfortunately, your data point is outside of the bounds of live coral events.  Please re-check the location')
+    if (data.error_string == "expert"){
+      alert('Your expert point has been submitted, and will be immediately added to the map!')
     }
     else {
-      alert('Your point has been added at (' + data.error_string + ')!  Please be patient, it will display on the map shortly.');
+      alert('Your point has been submitted!  It will be reviewed by experts soon and added to the heatmap.');
     }
     launch_read_script();
 
@@ -305,23 +321,36 @@ function launch_read_script() {
    $.getJSON( '/_read_all_points',{}, function (data) 
 	{
 		
-		var return_data = CSVToArray(data.return_value);
+		//var return_data = CSVToArray(data.return_value);
+	   	var return_data = Papa.parse(data.return_value).data;
 		observed_bleaching_points = []
 	   	markers = []
-		for (var index = 1; index < return_data.length; index++)
+		for (var index = 0; index < return_data.length-1; index++)
 		{
 			var ll = new google.maps.LatLng(parseFloat(return_data[index][0]), parseFloat(return_data[index][1]))
 			observed_bleaching_points.push({position: ll, dateinfo: return_data[index][2], recorder: return_data[index][3]})
 		}
-
                 for (var i = 0; i < observed_bleaching_points.length; i++) {
-                    add_marker(observed_bleaching_points[i].position, 'Date Recorded: ' + observed_bleaching_points[i].dateinfo, map, infowindow)
+                    add_marker(observed_bleaching_points[i], map, infowindow)
                  };
+
+		initialize_point_heatmap(observed_bleaching_points);
 
 
 	});
 }
 
+function initialize_point_heatmap(obs) {
+    // Create point marker Heatmap
+    var pointHeatmapData = [];
+    for (var i = 0; i < obs.length; i++) {
+	if (obs[i].recorder == 'expert') {
+        	pointHeatmapData.push(obs[i].position);
+	}
+    }
+    pointHeatmap.setData(pointHeatmapData);
+    pointHeatmap.setMap(map);
+}
 
 
 
