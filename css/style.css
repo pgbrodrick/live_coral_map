@@ -63,6 +63,11 @@ b {
     font-weight: 200;
 }
 
+.about-link {
+    font-size:1em;
+    font-weight: 300;
+}
+
 /* Navigation Bar */
 
 .nav-wrapper {
@@ -71,7 +76,7 @@ b {
 
 /* Body */
 body {
-    padding-bottom: 20rem;  /* Same height as footer, nothing cut off */
+    padding-bottom: 5rem;  /* Same height as footer, nothing cut off */
     background: rgb(240, 239, 234);  /* light brown */
 }
 
@@ -86,6 +91,13 @@ p > a {
     font-weight: 500
 }
 
+.link-br {
+    display: block;
+    margin-bottom: 4px;
+    font-size:2px;
+    line-height: 4px;
+}
+
 /* Buttons */
 button, input {
     font-family: 'Barlow', sans-serif;
@@ -93,6 +105,8 @@ button, input {
 .btn-large {
     background: rgb(16, 60, 85);
     border-color: rgb(16, 60, 85);
+    margin-bottom:5px;
+    width:100%;
 }
 .btn-large:hover {
     background: rgb(33, 150, 185);
@@ -101,6 +115,8 @@ button, input {
 .btn-disabled {
     background-color: rgb(238, 238, 238);
 }
+
+
 
 /* Forms */
 .form-container {
