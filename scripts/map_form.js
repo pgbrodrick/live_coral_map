@@ -22,12 +22,25 @@ function initialize_coral_map() {
     var mapMinZoom = 7;
     var mapMaxZoom = 25;
 
-    map = new google.maps.Map(document.getElementById("map_canvas"),{maxZoom: mapMaxZoom, minZoom:mapMinZoom, mapTypeId:'hybrid'});
+    map = new google.maps.Map(document.getElementById("map_canvas"),
+	    		      {maxZoom: mapMaxZoom, 
+			       minZoom:mapMinZoom, 
+			       mapTypeId:'hybrid', 
+			       mapTypeControlOptions: {position: google.maps.ControlPosition.LEFT_BOTTOM, 
+				                       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+			       zoomControlOptions: {
+					             position: google.maps.ControlPosition.LEFT_CENTER
+					           },
+			       fullscreenControlOptions: {
+					             position: google.maps.ControlPosition.LEFT_CENTER
+					           },
+			      streetViewControl: false
+			      });
 
     map.fitBounds(startBounds);
 
     addpointDiv = new AddPointDiv(map);
-    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(addpointDiv.div);
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(addpointDiv.div);
 
     var pointControlDiv = new OverlayDiv(map, 0, "Bleaching Observations");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
@@ -287,6 +300,7 @@ function AddPointControl(controlDiv, map) {
   controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
   controlUI.style.cursor = 'pointer';
   controlUI.style.marginBottom = '22px';
+  controlUI.style.marginRight = '10px';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Select Coverage layer';
   controlDiv.appendChild(controlUI);
@@ -300,7 +314,7 @@ function AddPointControl(controlDiv, map) {
   controlText.style.lineHeight = '28px';
   //controlText.style.paddingLeft = '10px';
   //controlText.style.paddingRight = '10px';
-  controlText.style.width = '200px';
+  controlText.style.width = '100px';
   controlText.style.paddingUp = '2px';
   controlText.style.paddingDown = '2px';
   controlText.innerHTML = 'Report Bleaching';
@@ -401,6 +415,8 @@ function OverlayControl(controlDiv, map, id, dispTxt) {
   controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
   controlUI.style.cursor = 'pointer';
   controlUI.style.marginBottom = '22px';
+  controlUI.style.marginLeft = '2px';
+  controlUI.style.marginRight = '2px';
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Select Coverage layer';
   controlDiv.appendChild(controlUI);
@@ -412,8 +428,9 @@ function OverlayControl(controlDiv, map, id, dispTxt) {
   controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
   controlText.style.fontSize = '16px';
   controlText.style.lineHeight = '28px';
-  controlText.style.paddingLeft = '2px';
-  controlText.style.paddingRight = '2px';
+  //controlText.style.paddingLeft = '2px';
+  //controlText.style.paddingRight = '2px';
+  controlText.style.width = '100px';
   controlText.style.paddingUp = '2px';
   controlText.style.paddingDown = '2px';
   controlText.innerHTML = dispTxt;
