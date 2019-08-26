@@ -210,13 +210,19 @@ function launch_record_script(lat, lng, submit_date, submit_expert) {
      submit_date: submit_date,
      submit_expert: submit_expert,
  }, function (data) {
-    if (data.error_string == "expert"){
-      alert('Your expert point has been submitted, and will be immediately added to the map!')
+    if (data.return_coral == "False") {
+      alert('Your submitted data point is outside of the coral reef extent mapped by the Center for Global Discovery and Conservation Science.  Please check your point coordinates and try again.')
     }
-    else {
-      alert('Your point has been submitted!  It will be reviewed by experts soon and added to the heatmap.');
+    else{
+
+        if (data.return_expert == "True"){
+           alert('Your expert point has been submitted, and will be immediately added to the map!')
+           launch_read_script();
+        }
+        else {
+           alert('Your point has been submitted!  It will be reviewed by experts soon and added to the heatmap.');
+        }
     }
-    launch_read_script();
 
  });
 }
