@@ -10,6 +10,7 @@ var report_point;
 var nodata_marker;
 var nodata_info;
 var pointHeatmap;
+var satHeatmap;
 
 var caogreen = 'rgb(0,152,58)';
 
@@ -50,8 +51,8 @@ function initialize_coral_map() {
 
     controllist = [ pointControlDiv, satHeatControlDiv];
 
-    pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
-
+    satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
+    initialize_sat_heatmap();
 
     pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
 
@@ -152,19 +153,20 @@ function selectControl(item) {
 function clearMap(){
 	nodata_info.close(map, nodata_marker);
 	pointHeatmap.set('opacity',0)
+	satHeatmap.set('opacity',0)
 }
 
 function pointOverlay(){
-	pointHeatmap.set('opacity',1)
+	pointHeatmap.set('opacity',0.75)
 	report_point.set('visible',true);
 }
 
 function pointHeatOverlay(){
 }
 
+
 function satHeatOverlay(){
-	nodata_info.open(map, nodata_marker);
-	report_point.set('visible',false);
+	satHeatmap.set('opacity',0.75)
 }
 
 
@@ -261,7 +263,32 @@ function initialize_point_heatmap(obs) {
     pointHeatmap.setMap(map);
 }
 
+function initialize_sat_heatmap() {
+    // Create point marker Heatmap
+	//nodata_info.open(map, nodata_marker);
+	//report_point.set('visible',false);
 
+        $.getJSON( '/_read_satellite_data',{}, function (data) 
+	{
+		
+	   	var return_data = Papa.parse(data.return_value).data;
+		var sat_heatmap_data = []
+		for (var index = 0; index < return_data.length-1; index++)
+		{
+			var ll = new google.maps.LatLng(parseFloat(return_data[index][1]), parseFloat(return_data[index][0]))
+			sat_heatmap_data.push(ll)
+		}
+
+		add_sat_heatmap_points(sat_heatmap_data);
+	});
+
+}
+
+
+function add_sat_heatmap_points(data) {
+     		satHeatmap.setData(data);
+     		satHeatmap.setMap(map);
+}
 
 
 
