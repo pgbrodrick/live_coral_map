@@ -108,6 +108,10 @@ button, input {
     margin-bottom:5px;
     width:100%;
 }
+.btn-small {
+    background: rgb(16, 60, 85);
+    border-color: rgb(16, 60, 85);
+}
 .btn-large:hover {
     background: rgb(33, 150, 185);
     border-color: rgb(33, 150, 185);

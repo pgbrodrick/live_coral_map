@@ -91,9 +91,21 @@ function initialize_coral_map() {
     google.maps.event.addListener(report_point,'dragend',function(){update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng())});
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+    document.getElementById("bleaching-info").addEventListener("click",function(){get_bleaching_info()});
 
     selectControl(0);
 }
+
+function get_bleaching_info(){
+   var div = document.getElementById("bleaching-detail");
+   if (div.style.display == 'none') {
+        div.style.display = 'block';
+   }
+   else {
+        div.style.display = 'none';
+   }
+}
+
 
 
 function add_marker(point_info, map, infowindow){
@@ -203,12 +215,13 @@ function show_form(){
 }
 
 
-function launch_record_script(lat, lng, submit_date, submit_expert) {
+function launch_record_script(lat, lng, submit_date, submit_expert, bleaching_level) {
    $.getJSON( '/_record_point',{
      lat: lat,
      lng: lng,
      submit_date: submit_date,
      submit_expert: submit_expert,
+     bleaching_level: bleaching_level,
  }, function (data) {
     if (data.return_coral == "False") {
       alert('Your submitted data point is outside of the coral reef extent mapped by the Center for Global Discovery and Conservation Science.  Please check your point coordinates and try again.')
@@ -273,7 +286,18 @@ function submit_form() {
     var submit_lat = document.getElementById("latitude").value
     var submit_lng = document.getElementById("longitude").value
 
-    launch_record_script(submit_lat, submit_lng, submit_date, reef_expert)
+    var bleaching_level;
+    if ( document.getElementById('bleaching-level1').checked) {
+	    bleaching_level = 1;
+    }
+    else if ( document.getElementById('bleaching-level3').checked) {
+	    bleaching_level = 3;
+    }
+    else {
+	    bleaching_level = 2;
+    }
+
+    launch_record_script(submit_lat, submit_lng, submit_date, reef_expert, bleaching_level);
 }
 
 
