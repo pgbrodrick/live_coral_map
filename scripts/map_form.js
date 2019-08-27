@@ -92,6 +92,11 @@ function initialize_coral_map() {
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
+    document.addEventListener('DOMContentLoaded', function() {
+	      var elems = document.querySelectorAll('select');
+	      var instances = M.FormSelect.init(elems, options);
+	    });
+
     selectControl(0);
 }
 
