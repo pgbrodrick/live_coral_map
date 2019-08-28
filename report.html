@@ -100,22 +100,56 @@
         <div class="card-content">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s12 l3">
+              <div class="input-field col s6">
                 <input type="text" id="submit_date" class="validate">
-                <label for="submit_date">Date (MM/DD/YYYY)</label>
+                <label for="submit_date">Date</label>
               </div>
-              <div class="input-field col s6 l3">
+              <div class="input-field col s6">
+                <input type="text" id="reef_expert" class="validate">
+                <label for="reef_expert">Reef Expert ID</label>
+              </div>
+              <div class="input-field col s6">
                 <input type="text" id="latitude" class="validate">
                 <label for="latitude">Latitude (dd)</label>
               </div>
-              <div class="input-field col s6 l3">
+              <div class="input-field col s6">
                 <input type="text" id="longitude" class="validate">
                 <label for="longitude">Longitude (dd)</label>
               </div>
-              <div class="input-field col s12 l3">
-                <input type="text" id="reef_expert" class="validate">
-                <label for="reef_expert">Reef Expert ID (optional)</label>
+
+
+              <div class="input-field col s12" style="margin-top: 0px; margin-bottom: 30px;">
+                  <label for="bleaching-level"> Bleaching Level:
+		   <a class="btn-floating btn-small waves-effect waves-light" id="bleaching-info">?</a>
+</label>
               </div>
+
+	      <div class="input-field col s12" id="bleaching-detail" style="display: None;">
+		      <p> The bleaching level indicates how severe the event that you are reporting is.</br>
+			Level 1: Some corals look pale but are not bleach white.</br>
+			Level 2: Small portions of corals are bleach white.</br>
+			Level 3: Large areas of coral are bleach white.
+		      </p>
+	      </div>
+
+              <form action="#">
+                <label class="input-field col s2">
+                    <input id="bleaching-level1" name="bleaching-level" type="radio" />
+                    <span>1</span>
+                </label>
+                <label class="input-field col s2">
+                    <input id="bleaching-level2" name="bleaching-level" type="radio" checked />
+                    <span>2</span>
+                </label>
+                <label class="input-field col s2">
+                    <input id="bleaching-level3" name="bleaching-level" type="radio"  />
+                    <span>3</span>
+                </label>
+              </form>
+         
+
+
+
             </div>
             <div class="row center-align">
               <div class="col s12">
@@ -127,6 +161,7 @@
       </div>
     </div>
 
+    <div id="legend">Bleaching Level</div>
 
     <div id="post_submission_text" style="display: none;">
       <h4><span style="color: #ff0000;">Thank you for helping to identify a new bleaching event!</span></h4>
@@ -150,7 +185,6 @@
 
 
 
-
   </br>
   </br>
   </br>
@@ -166,7 +200,7 @@
         <div class="col s12 m4 center-align">
           <div class="section">
           <a href = 'https://www.noaa.gov/' target = 'blank'>
-            <img class="responsive-img" src="images/NOAA_SquareWhiteBackground.gif" />
+            <img class="responsive-img" src="images/FISHERIES-LOGO_Horiz.svg" />
           </a>
           </div>
         </div>

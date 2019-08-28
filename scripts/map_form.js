@@ -10,6 +10,8 @@ var report_point;
 var nodata_marker;
 var nodata_info;
 var pointHeatmap;
+//var bleaching_colors = ['#FFD700','#FF8C00','#FF0000'];
+var bleaching_colors = ['rgb(255,255,0)','rgb(255,140,0)','rgb(255,0,0)'];
 
 var caogreen = 'rgb(0,152,58)';
 
@@ -26,8 +28,9 @@ function initialize_coral_map() {
 	    		      {maxZoom: mapMaxZoom, 
 			       minZoom:mapMinZoom, 
 			       mapTypeId:'hybrid', 
-			       mapTypeControlOptions: {position: google.maps.ControlPosition.LEFT_BOTTOM, 
-				                       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+			       mapTypeControl: false,
+			       //mapTypeControlOptions: {position: google.maps.ControlPosition.LEFT_BOTTOM, 
+			       //                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
 			       zoomControlOptions: {
 					             position: google.maps.ControlPosition.LEFT_CENTER
 					           },
@@ -91,20 +94,51 @@ function initialize_coral_map() {
     google.maps.event.addListener(report_point,'dragend',function(){update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng())});
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+    document.getElementById("bleaching-info").addEventListener("click",function(){get_bleaching_info()});
+
+
+    var legend = document.getElementById('legend');
+    for (var index =0; index < bleaching_colors.length; index++) {
+      var name = String(index + 1);
+      var scale = 10;
+      var opacity = 1;
+      var div = document.createElement('div');
+      div.innerHTML = "<img src='data:image/svg+xml;utf8,<svg viewBox=\"0 0 100 100\" height=\""+ 8*scale/8 + "\" width=\""+ 8*scale/8 + "\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"50\" style=\"fill: " + bleaching_colors[index] + "; stroke: white; stroke-width: 1;\" opacity=\""+ opacity+ "\"/></svg>'> " + name;
+      legend.appendChild(div);
+    }
+
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
     selectControl(0);
 }
 
+function get_bleaching_info(){
+   var div = document.getElementById("bleaching-detail");
+   if (div.style.display == 'none') {
+        div.style.display = 'block';
+   }
+   else {
+        div.style.display = 'none';
+   }
+}
 
-function add_marker(point_info, map, infowindow){
 
+
+function add_marker(point_info, map, infowindow, bleaching_level){
+
+    var color;
+    if (bleaching_level == '1'){color = bleaching_colors[0];}
+    else if (bleaching_level == '3') {color = bleaching_colors[2];}
+    else {color = bleaching_colors[1];}
     if (point_info.recorder == 'expert') {
     var marker = new google.maps.Marker({
          position: point_info.position,
          icon: {
             path: google.maps.SymbolPath.CIRCLE,
-            scale: 2,
-            strokeColor: '#C93211'
+            scale: 3,
+            strokeColor: color,
+            fillOpacity: 1,
+            fillColor: color
           },
          map: map
        });
@@ -203,12 +237,13 @@ function show_form(){
 }
 
 
-function launch_record_script(lat, lng, submit_date, submit_expert) {
+function launch_record_script(lat, lng, submit_date, submit_expert, bleaching_level) {
    $.getJSON( '/_record_point',{
      lat: lat,
      lng: lng,
      submit_date: submit_date,
      submit_expert: submit_expert,
+     bleaching_level: bleaching_level,
  }, function (data) {
     if (data.return_coral == "False") {
       alert('Your submitted data point is outside of the coral reef extent mapped by the Center for Global Discovery and Conservation Science.  Please check your point coordinates and try again.')
@@ -240,7 +275,7 @@ function launch_read_script() {
 			observed_bleaching_points.push({position: ll, dateinfo: return_data[index][2], recorder: return_data[index][3]})
 		}
                 for (var i = 0; i < observed_bleaching_points.length; i++) {
-                    add_marker(observed_bleaching_points[i], map, infowindow)
+                    add_marker(observed_bleaching_points[i], map, infowindow, return_data[i][4])
                  };
 
 		initialize_point_heatmap(observed_bleaching_points);
@@ -273,7 +308,18 @@ function submit_form() {
     var submit_lat = document.getElementById("latitude").value
     var submit_lng = document.getElementById("longitude").value
 
-    launch_record_script(submit_lat, submit_lng, submit_date, reef_expert)
+    var bleaching_level;
+    if ( document.getElementById('bleaching-level1').checked) {
+	    bleaching_level = 1;
+    }
+    else if ( document.getElementById('bleaching-level3').checked) {
+	    bleaching_level = 3;
+    }
+    else {
+	    bleaching_level = 2;
+    }
+
+    launch_record_script(submit_lat, submit_lng, submit_date, reef_expert, bleaching_level);
 }
 
 
