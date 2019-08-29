@@ -94,7 +94,6 @@ function initialize_coral_map() {
     google.maps.event.addListener(report_point,'dragend',function(){update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng())});
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
-    document.getElementById("bleaching-info").addEventListener("click",function(){get_bleaching_info()});
 
 
     var legend = document.getElementById('legend');
@@ -110,16 +109,6 @@ function initialize_coral_map() {
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
     selectControl(0);
-}
-
-function get_bleaching_info(){
-   var div = document.getElementById("bleaching-detail");
-   if (div.style.display == 'none') {
-        div.style.display = 'block';
-   }
-   else {
-        div.style.display = 'none';
-   }
 }
 
 
