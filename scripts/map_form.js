@@ -97,8 +97,9 @@ function initialize_coral_map() {
 
 
     var legend = document.getElementById('legend');
+    var names = ['Light','Medium','Severe']
     for (var index =0; index < bleaching_colors.length; index++) {
-      var name = String(index + 1);
+      var name = names[index];//String(index + 1);
       var scale = 10;
       var opacity = 1;
       var div = document.createElement('div');

@@ -8,7 +8,7 @@
 
   <link rel='stylesheet' href="css/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel='stylesheet' href="css/style.css">
+  <link rel='stylesheet' href="css/style.css?v=1.1">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:200,300,400,500,600,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,500,600,700">
@@ -118,32 +118,28 @@
               </div>
 
 
-              <div class="input-field col s12" style="margin-top: 0px; margin-bottom: 30px;">
-                  <label for="bleaching-level"> Bleaching Level:
-</label>
+              <div class="col s12">
+		      <label for="bleaching-level"> Bleaching Level:</br></label>
               </div>
 
-	      <div class="input-field col s12" id="bleaching-detail">
-		      <p> The bleaching level indicates how severe the event that you are reporting is.</br>
-			Level 1: Some corals look pale but are not bleach white.</br>
-			Level 2: Small portions of corals are bleach white.</br>
-			Level 3: Large areas of coral are bleach white.
-		      </p>
-	      </div>
-
               <form action="#">
-                <label class="input-field col s2">
+		<div class="s12 m12">
+                <label>
                     <input id="bleaching-level1" name="bleaching-level" type="radio" />
-                    <span>1</span>
+		    <span> Light </span>
                 </label>
-                <label class="input-field col s2">
+		<span>- Some corals look pale but are not bleach white.</br></span>
+                <label>
                     <input id="bleaching-level2" name="bleaching-level" type="radio" checked />
-                    <span>2</span>
+		    <span>Medium </span>
                 </label>
-                <label class="input-field col s2">
+		<span>- Small portions of corals are bleach white.</br></span>
+                <label>
                     <input id="bleaching-level3" name="bleaching-level" type="radio"  />
-                    <span>3</span>
+		    <span>Severe </span>
                 </label>
+		<span> - Large areas of coral are bleach white.</br></span>
+		</div>
               </form>
          
 
@@ -181,6 +177,15 @@
       <p class="flow-text">When you report coral bleaching in your area, you're helping environmental organizations, research scientists, Hawaiian policymakers, and engaged community members like yourself. For the first time ever, Hawaiians are putting together large-scale efforts to respond to coral bleaching in real-time and to limit damage to our reefs.</p>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+      <h2>Coral Bleaching Levels</h2>
+  </div>
+  <div class="row">
+	  <p class="flow-text">Coral bleaching is an extremely complex process, and to make reporting more straightforward we simplified it down to three categories.  <b>Light bleaching </b>represents areas where some corals look pale but are not bleach white, <b>medium bleaching </b>categorizes areas where small portions of corals are bleach white, and <b>severe bleaching</b> is used to describe large areas with bleach white corals.  
+  </div>
+</div>
+
 
 
 
