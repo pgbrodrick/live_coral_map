@@ -11,6 +11,7 @@ var nodata_marker;
 var nodata_info;
 var pointHeatmap;
 var satHeatmap;
+var satHeatmapCoarse;
 //var bleaching_colors = ['#FFD700','#FF8C00','#FF0000'];
 var bleaching_colors = ['rgb(255,255,0)','rgb(255,140,0)','rgb(255,0,0)'];
 
@@ -23,7 +24,7 @@ function initialize_coral_map() {
     new google.maps.LatLng(18.5,-160.5),
     new google.maps.LatLng(22.0,-154.5));
     var mapMinZoom = 7;
-    var mapMaxZoom = 25;
+    var mapMaxZoom = 18;
 
     map = new google.maps.Map(document.getElementById("map_canvas"),
 	    		      {maxZoom: mapMaxZoom, 
@@ -54,7 +55,11 @@ function initialize_coral_map() {
 
     controllist = [ pointControlDiv, satHeatControlDiv];
 
-    satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
+    //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
+    //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 1600, radius: 15});
+    //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.002, maxIntensity: 800, dissipating: false});
+    satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.005, maxIntensity: 800, dissipating: false});
+    satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 1600, radius: 15});
     initialize_sat_heatmap();
 
     pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
@@ -75,6 +80,7 @@ function initialize_coral_map() {
     map.addListener('center_changed', function() {nodata_marker.setPosition(map.getCenter());});
     nodata_info = new google.maps.InfoWindow({content: "NO BLEACHING DETECTED BY OUR SATELLITES YET"});
 
+    map.addListener('zoom_changed', function() {adjust_sat_overlay();});
 
     //// Try HTML5 geolocation.
     //if (navigator.geolocation) {
@@ -121,6 +127,13 @@ function get_bleaching_info(){
    else {
         div.style.display = 'none';
    }
+}
+
+
+function adjust_sat_overlay(){
+	satHeatOverlay();
+	//if (map.getZoom() == 12 || map.getZoom() == 11) {
+	//}
 }
 
 
@@ -188,6 +201,7 @@ function clearMap(){
 	nodata_info.close(map, nodata_marker);
 	pointHeatmap.set('opacity',0)
 	satHeatmap.set('opacity',0)
+	satHeatmapCoarse.set('opacity',0)
 }
 
 function pointOverlay(){
@@ -200,7 +214,15 @@ function pointHeatOverlay(){
 
 
 function satHeatOverlay(){
-	satHeatmap.set('opacity',0.75)
+	if (map.getZoom() >= 13) {
+		satHeatmap.set('opacity',1.);
+		satHeatmapCoarse.set('opacity',0.);
+	}
+	else {
+		satHeatmapCoarse.set('opacity',0.);
+		satHeatmap.set('opacity',1.);
+	}
+
 }
 
 
@@ -311,7 +333,8 @@ function initialize_sat_heatmap() {
 		for (var index = 0; index < return_data.length-1; index++)
 		{
 			var ll = new google.maps.LatLng(parseFloat(return_data[index][1]), parseFloat(return_data[index][0]))
-			sat_heatmap_data.push(ll)
+			sat_heatmap_data.push({location: ll, weight: parseFloat(return_data[index][2])})
+                        //add_marker({position: ll, recorder: 'expert', dateinfo: return_data[i][2]}, map, infowindow, Math.round(return_data[i][2]/4.*3.))
 		}
 
 		add_sat_heatmap_points(sat_heatmap_data);
@@ -323,6 +346,9 @@ function initialize_sat_heatmap() {
 function add_sat_heatmap_points(data) {
      		satHeatmap.setData(data);
      		satHeatmap.setMap(map);
+     		satHeatmapCoarse.setData(data);
+     		satHeatmapCoarse.setMap(map);
+    		selectControl(0);
 }
 
 
