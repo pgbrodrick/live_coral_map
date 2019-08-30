@@ -194,7 +194,7 @@ input[type=text] {  /* !important overrides bootstrap settings */
 }
 
 .about-img{
-    width:330pt;
+    width:80%;
     border:1px solid;
     border-color:black;
     border-radius:50%;
