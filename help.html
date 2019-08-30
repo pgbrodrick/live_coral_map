@@ -15,6 +15,10 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:200,300,400,500,600,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,500,600,700">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
 </head>
 
 <body>
@@ -40,19 +44,43 @@
           <!-- End Facebook Pixel Code -->
       </header>
       
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <ul class="left valign-wrapper">
-          <li class="active"><a href="help.html">Help</a></li>
+<!--- ######################### Navbar ######################### --->
+
+<div class="navbar-fixed">
+      <nav>
+          <div class="nav-wrapper">
+            <div class="row">
+                <div class="col s1 m1 hide-on-large-only">
+                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </div>
+
+                <div class="col m8 l8 hide-on-med-and-down">
+                  <ul>
+                  <li><a href="help.html">Help</a></li>
+                  <li><a href="report.html">Report</a></li>
+                  <li><a href="detail.html">Learn</a></li>
+                  <li class = 'active'><a href="about.html">About</a></li>
+                  </ul>
+                </div>
+
+                <div class="col s6 offset-s5 m4 offset-m7 l4 right-align">
+                    <a href="https://www.facebook.com/hawaiicoral/"><i class="fab fa-facebook-square"></i></a>&ensp;
+                    <a href="https://instagram.com/hawaiicoral_org/"><i class="fab fa-instagram"></i></a>&ensp;
+                    <a href="https://twitter.com/HawaiiCoral_Org"><i class="fab fa-twitter"></i></a>
+                </div>
+           </div>
+          </div>
+        </nav>
+
+
+    </div>
+    
+      <ul class="sidenav" id="mobile-demo">
+          <li  class = 'active'><a href="help.html">Help</a></li>
           <li><a href="report.html">Report</a></li>
           <li><a href="detail.html">Learn</a></li>
           <li><a href="about.html">About</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-
+      </ul>
   <!--- ######################### Header ######################### --->
 
   <div class="parallax-container">
@@ -221,6 +249,8 @@
       var elems = document.querySelectorAll('.parallax');
       var instances = M.Parallax.init(elems, options);
     });
+
+
   </script>
 
 </body>
