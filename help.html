@@ -44,25 +44,34 @@
           <!-- End Facebook Pixel Code -->
       </header>
       
-      <div class="navbar-fixed">
-          <nav>
-              <div class="nav-wrapper">
-                
-                 <ul class="right">
-                    <li><a href="https://instagram.com/hawaiicoral_org/"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://twitter.com/HawaiiCoral_Org"><i class="fab fa-twitter"></i></a></li>
-                  </ul>
-                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="left hide-on-med-and-down">
-                  <li class = 'active'><a href="help.html">Help</a></li>
-                  <li><a href="report.html">Report</a></li>
-                  <li><a href="detail.html">Learn</a></li>
-                  <li><a href="about.html">About</a></li>
-                </ul>
-               
-              </div>
-            </nav>
-          </div>
+<!--- ######################### Navbar ######################### --->
+
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+          
+           <ul class="right">
+              <li><a href="https://instagram.com/hawaiicoral_org/"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://twitter.com/HawaiiCoral_Org"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="left hide-on-med-and-down">
+            <li  class = 'active'><a href="help.html">Help</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="detail.html">Learn</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+         
+        </div>
+      </nav>
+    </div>
+    
+      <ul class="sidenav" id="mobile-demo">
+          <li  class = 'active'><a href="help.html">Help</a></li>
+          <li><a href="report.html">Report</a></li>
+          <li><a href="detail.html">Learn</a></li>
+          <li><a href="about.html">About</a></li>
+      </ul>
   <!--- ######################### Header ######################### --->
 
   <div class="parallax-container">
@@ -231,6 +240,8 @@
       var elems = document.querySelectorAll('.parallax');
       var instances = M.Parallax.init(elems, options);
     });
+
+
   </script>
 
 </body>
