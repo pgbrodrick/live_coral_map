@@ -17,6 +17,11 @@
   <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6TTiAGXhdT8NdHKluduXz8aYvg-mGkXU&libraries=visualization"></script>
   <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
   <script type='text/javascript' src='scripts/map_form.js'></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  
+
 </head>
 
 
@@ -49,18 +54,33 @@
         </header>
 <!--- ######################### Navbar ######################### --->
 
+
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-        <ul class="left valign-wrapper">
-        <li><a href="help.html">Help</a></li>
-        <li class="active"><a href="report.html">Report</a></li>
-        <li><a href="detail.html">Learn</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
+      <nav>
+          <div class="nav-wrapper">
+            
+             <ul class="right">
+                <li><a href="https://instagram.com/hawaiicoral_org/"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/HawaiiCoral_Org"><i class="fab fa-twitter"></i></a></li>
+              </ul>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+              <li><a href="help.html">Help</a></li>
+              <li class = 'active'><a href="report.html">Report</a></li>
+              <li><a href="detail.html">Learn</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+           
+          </div>
+        </nav>
+      </div>
+      
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="help.html">Help</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="detail.html">Learn</a></li>
+            <li class = 'active'><a href="about.html">About</a></li>
+        </ul>
 
 
 
