@@ -205,7 +205,10 @@ function update_latlong(new_lat,new_lng){
 
 function show_form(){
   var x = document.getElementById("mapform");
+  
+  if (x.style.display == 'none' || x.style.display == ""){
   x.style.display = "block";
+  addpointDiv.control.controlText.style.color = caogreen;
 
   update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng());
 
@@ -222,8 +225,13 @@ function show_form(){
   } 
   var today = mm + '/' + dd + '/' + yyyy;
   document.getElementById('submit_date').value = today;
-  document.getElementById("reef_expert").value = 'None'
-  M.updateTextFields()
+  document.getElementById("reef_expert").value = 'None';
+  M.updateTextFields();
+  }
+  else {
+	x.style.display = "none";
+        addpointDiv.control.controlText.style.color = 'rgb(0,0,0)';
+  }
 }
 
 
@@ -350,7 +358,7 @@ function AddPointControl(controlDiv, map) {
 
   // Set CSS for the control interior.
   var controlText = document.createElement('div');
-  controlText.style.color = caogreen;
+  controlText.style.color = 'rgb(0,0,0)';
   controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
   controlText.style.fontSize = '16px';
   controlText.style.lineHeight = '28px';
