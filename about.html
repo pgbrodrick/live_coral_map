@@ -57,10 +57,10 @@
 	
 	        <div class="col m8 l8 hide-on-med-and-down">
 	          <ul>
-                  <li><a href="help.html">Help</a></li>
+		  <li><a><img src="images/hawaiicoral-lrgtxt.png" height= "64"></a></li>
+		  <li class = 'active'><a href="about.html">About</a></li>
                   <li><a href="report.html">Report</a></li>
-                  <li><a href="detail.html">Learn</a></li>
-                  <li class = 'active'><a href="about.html">About</a></li>
+                  <li><a href="help.html">Help</a></li>
 	          </ul>
 	        </div>
 
@@ -75,59 +75,53 @@
       </div>
       
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="help.html">Help</a></li>
-            <li><a href="report.html">Report</a></li>
-            <li><a href="detail.html">Learn</a></li>
             <li class = 'active'><a href="about.html">About</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="help.html">Help</a></li>
         </ul>
   <!--- ######################### Header ######################### --->
 
-      <div class="parallax-container">
-            <div class="parallax"><img src="images/DSC_2033.jpg"></div>
+  <div class = "about-background-div">
             <div class="row">
-              <div class="col s10 offset-s1 m4 offset-m4">
+              <div class="col s10 offset-s1 m4 offset-m4 l4 offset-l4">
                 <h1 class="center-align "><img src="images/hawaiicoral-lrgtxt.png" class = 'about-img'></h1>
               </div>
-            </div>
-          </div>
 
-      <div class="container">
-          <div class="row">
-                <div class="col s12">
-                  <div class="card horizontal hoverable z-depth-2">
-                    <div class="card-stacked">
-                      <div class="card-content">
-                        <a href = 'https://gdcs.asu.edu/' target = 'blank'>
-                        <h3 class="card-title">ASU Center for Global Discovery and Conservation Science (ASU-GDCS)</h3>
-                        <p class="flow-text">ASU-GDCS is a world leader in large-scale conservation research and applications on land and in the sea. Our science generates solution pathways for the conservation, management and decision-making communities as well as for the public.</p>
+
+ <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <a href = 'https://gdcs.asu.edu/' target = 'blank'>
+        <h2>ASU Center for Global Discovery and Conservation Science (ASU-GDCS)</h2>
+      </div>
+      <div class="col s12 m12 l12">
+      <p class="flow-text">ASU-GDCS is a world leader in large-scale conservation research and applications on land and in the sea. Our science generates solution pathways for the conservation, management and decision-making communities as well as for the public.</p>
+      <br />
                     </a>
-                    <br />
-                            <p class="flow-text"> GDCS is partnered with 
-                            <a href = 'https://dlnr.hawaii.gov/dar/' target = 'blank' class = 'about-link'>
-                                Hawaii-DAR
-                            </a> 
-                            and the
-                            <a href = 'https://www.noaa.gov/' target = 'blank' class = 'about-link'>
-                                National Oceanic and Atmospheric Administration (NOAA)
-                            </a>  for coral reef science, conservation and management in the Hawaiian Islands
-                                    </p>
-                        
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+           <p class="flow-text"> GDCS is partnered with 
+              <a href = 'https://dlnr.hawaii.gov/dar/' target = 'blank' class = 'about-link'>
+                  Hawaii-DAR
+              </a> 
+              and the
+              <a href = 'https://www.noaa.gov/' target = 'blank' class = 'about-link'>
+                  National Oceanic and Atmospheric Administration (NOAA)
+              </a>  for coral reef science, conservation and management in the Hawaiian Islands
+           </p>
+ 
+      </div>
+    </div>
 
 
-                    <div class="row">
-                          <div class="col s12">
-                            <div class="card horizontal hoverable z-depth-2">
-                              <div class="card-stacked">
-                                <div class="card-content">
-                                        <h3 class="card-title">Partners and Sponsors</h3>
                         
-                                  <p class="flow-text">This website was launched on short notice to generate information and solutions to coral reef challenges across the Hawaiian Islands with backing from:
-                                    <span  class = 'link-br'><br /></span>
+
+
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h2>Partners and Sponsors</h2>
+      </div>
+      <div class="col s12 m12 l12">
+      <p class="flow-text">This website was launched on short notice to generate information and solutions to coral reef challenges across the Hawaiian Islands with backing from:
+                              <span  class = 'link-br'><br /></span>
                                         <a href = 'https://www.oneearth.org/' target = 'blank' class = 'about-link'>
                                             One Earth
                                         </a>  
@@ -151,14 +145,30 @@
                                         </a>
                                         
                                     </p>
-                              </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-            
-                    
+
+ 
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class = 'row'>
+      <div class="col s12 m4 l4 offset-m1 offset-l1">
+          <a class="waves-effect waves-light btn-large" href="about.html">About Us</a>
+      </div>
+      <div class="col s12 m4 l4 offset-m1 offset-l1">
+        <a class="waves-effect waves-light btn-large" href="help.html">How to Help</a>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
     </br>
     </br>
     </br>
@@ -192,7 +202,7 @@
             M.AutoInit();
             document.addEventListener('DOMContentLoaded', function() {
               var elems = document.querySelectorAll('.parallax');
-              var instances = M.Parallax.init(elems, options);
+              var instances = M.Parallax.init(elems);
             });
     </script>
         
