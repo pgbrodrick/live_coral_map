@@ -4,7 +4,7 @@ html {
     font-size: 16px;
 }
 h1 {
-    color: rgb(15, 60, 85);
+    color: whitesmoke;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -13,7 +13,7 @@ h1 {
     line-height: 1.5;
 }
 h2 {
-    color: rgb(15, 60, 85);
+    color: rgb(255, 189, 89);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -30,7 +30,7 @@ h3 {
     line-height: 1.5;
 }
 h4 {
-    color: rgb(117, 117, 117);
+    color: rgb(215, 215, 215);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -39,7 +39,7 @@ h4 {
     line-height: 1.5;
 }
 h5 {
-    color: rgb(117, 117, 117);
+    color: rgb(215, 215, 215);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -48,7 +48,7 @@ h5 {
     line-height: 1.5;
 }
 p, ol {
-    color: rgb(117, 117, 117);
+    color: rgb(215, 215, 215);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -199,3 +199,63 @@ input[type=text] {  /* !important overrides bootstrap settings */
     border-color:black;
     border-radius:50%;
 }
+
+#banner {
+	background: url("../images/papabay_subset_comp.jpg");
+	background-position: center center, center center;
+	background-size: auto, cover;
+	background-repeat: no-repeat;
+	padding: 3em 0;
+}
+
+.report-background-div {
+  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0, 0, 0, 0.7)), url("../images/papabay_comp.jpg");
+  height:auto;
+  background-position: center center, center center;
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+  align-content: center;
+  overflow:hidden;
+  color:white;
+}
+
+.help-background-div {
+  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0, 0, 0, 0.7)), url("../images/DSC_1963_comp.jpg");
+  height:auto;
+  background-position: center center, center center;
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+  align-content: center;
+  overflow:hidden;
+  color:white;
+}
+
+.about-background-div {
+  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0, 0, 0, 0.7)), url("../images/DSC_2033_comp.jpg");
+  height:auto;
+  background-position: center center, center center;
+  background-size: auto, cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin:0;
+  align-content: center;
+  overflow:hidden;
+  color:white;
+}
+
+.help_h1 {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 65pt;
+    color: whitesmoke;
+  }
+.help_h5 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size:30px;
+    text-align: left;
+    font-weight:normal; 
+  }
