@@ -218,7 +218,6 @@ input[type=text] {  /* !important overrides bootstrap settings */
   margin:0;
   align-content: center;
   overflow:hidden;
-  color:white;
 }
 
 .help-background-div {
