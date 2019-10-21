@@ -101,12 +101,12 @@ function initialize_coral_map() {
     google.maps.event.addListener(report_point,'dragend',function(){update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng())});
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
-    document.getElementById("bleaching-info").addEventListener("click",function(){get_bleaching_info()});
 
 
     var legend = document.getElementById('legend');
+    var names = ['Light','Medium','Severe']
     for (var index =0; index < bleaching_colors.length; index++) {
-      var name = String(index + 1);
+      var name = names[index];//String(index + 1);
       var scale = 10;
       var opacity = 1;
       var div = document.createElement('div');
@@ -117,16 +117,6 @@ function initialize_coral_map() {
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
     selectControl(0);
-}
-
-function get_bleaching_info(){
-   var div = document.getElementById("bleaching-detail");
-   if (div.style.display == 'none') {
-        div.style.display = 'block';
-   }
-   else {
-        div.style.display = 'none';
-   }
 }
 
 
@@ -239,7 +229,10 @@ function update_latlong(new_lat,new_lng){
 
 function show_form(){
   var x = document.getElementById("mapform");
+  
+  if (x.style.display == 'none' || x.style.display == ""){
   x.style.display = "block";
+  addpointDiv.control.controlText.style.color = caogreen;
 
   update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng());
 
@@ -256,8 +249,13 @@ function show_form(){
   } 
   var today = mm + '/' + dd + '/' + yyyy;
   document.getElementById('submit_date').value = today;
-  document.getElementById("reef_expert").value = 'None'
-  M.updateTextFields()
+  document.getElementById("reef_expert").value = 'None';
+  M.updateTextFields();
+  }
+  else {
+	x.style.display = "none";
+        addpointDiv.control.controlText.style.color = 'rgb(0,0,0)';
+  }
 }
 
 
@@ -413,7 +411,7 @@ function AddPointControl(controlDiv, map) {
 
   // Set CSS for the control interior.
   var controlText = document.createElement('div');
-  controlText.style.color = caogreen;
+  controlText.style.color = 'rgb(0,0,0)';
   controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
   controlText.style.fontSize = '16px';
   controlText.style.lineHeight = '28px';
