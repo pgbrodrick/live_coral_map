@@ -59,7 +59,7 @@ function initialize_coral_map() {
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 1600, radius: 15});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.002, maxIntensity: 800, dissipating: false});
     satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.005, maxIntensity: 800, dissipating: false});
-    satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 1600, radius: 15});
+    satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 1600, radius: 5});
     initialize_sat_heatmap();
 
     pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
@@ -195,8 +195,11 @@ function clearMap(){
 }
 
 function pointOverlay(){
-	pointHeatmap.set('opacity',0.75)
+	//pointHeatmap.set('opacity',0.75)
 	report_point.set('visible',true);
+	for (var i = 0; i < markers.length; i++){
+		markers[i].set('visible',true);
+	}
 }
 
 function pointHeatOverlay(){
@@ -204,13 +207,17 @@ function pointHeatOverlay(){
 
 
 function satHeatOverlay(){
-	if (map.getZoom() >= 13) {
+	if (map.getZoom() >= 11) {
 		satHeatmap.set('opacity',1.);
 		satHeatmapCoarse.set('opacity',0.);
 	}
 	else {
-		satHeatmapCoarse.set('opacity',0.);
-		satHeatmap.set('opacity',1.);
+		satHeatmapCoarse.set('opacity',1.);
+		satHeatmap.set('opacity',0.);
+	}
+	report_point.set('visible',false);
+	for (var i = 0; i < markers.length; i++){
+		markers[i].set('visible',false);
 	}
 
 }
