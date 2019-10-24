@@ -17,6 +17,9 @@ var bleaching_colors = ['rgb(255,255,0)','rgb(255,140,0)','rgb(255,0,0)'];
 
 var caogreen = 'rgb(0,152,58)';
 
+var legend;
+var legendHeatmap;
+
 
 function initialize_coral_map() {
 
@@ -103,19 +106,24 @@ function initialize_coral_map() {
     document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
 
-    var legend = document.getElementById('legend');
+    legend = document.getElementById('legend');
     var names = ['Light','Medium','Severe']
     for (var index =0; index < bleaching_colors.length; index++) {
-      var name = names[index];//String(index + 1);
+      var name = names[2-index];//String(index + 1);
       var scale = 10;
       var opacity = 1;
       var div = document.createElement('div');
-      div.innerHTML = "<img src='data:image/svg+xml;utf8,<svg viewBox=\"0 0 100 100\" height=\""+ 8*scale/8 + "\" width=\""+ 8*scale/8 + "\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"50\" style=\"fill: " + bleaching_colors[index] + "; stroke: white; stroke-width: 1;\" opacity=\""+ opacity+ "\"/></svg>'> " + name;
+      div.innerHTML = "<img src='data:image/svg+xml;utf8,<svg viewBox=\"0 0 100 100\" height=\""+
+      8*scale/8 + "\" width=\""+ 8*scale/8 + "\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"50\" style=\"fill: " + bleaching_colors[2-index] + "; stroke: white; stroke-width: 1;\" opacity=\""+ opacity+ "\"/></svg>'> " + name;
       legend.appendChild(div);
     }
 
+
+    legendHeatmap = document.getElementById('legendHeatmap');
+
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
+    google.maps.event.addListenerOnce('tilesloaded',function(){selectControl(0)});
     selectControl(0);
 }
 
@@ -200,6 +208,8 @@ function pointOverlay(){
 	for (var i = 0; i < markers.length; i++){
 		markers[i].set('visible',true);
 	}
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].clear()
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 }
 
 function pointHeatOverlay(){
@@ -219,6 +229,8 @@ function satHeatOverlay(){
 	for (var i = 0; i < markers.length; i++){
 		markers[i].set('visible',false);
 	}
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].clear()
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendHeatmap);
 
 }
 
