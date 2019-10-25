@@ -19,6 +19,7 @@ var caogreen = 'rgb(0,152,58)';
 
 var legend;
 var legendHeatmap;
+var selectedControl;
 
 
 function initialize_coral_map() {
@@ -61,8 +62,8 @@ function initialize_coral_map() {
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 1600, radius: 15});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.002, maxIntensity: 800, dissipating: false});
-    satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.005, maxIntensity: 800, dissipating: false});
-    satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 1600, radius: 5});
+    satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.005, maxIntensity: 400, dissipating: false});
+    satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 2000, radius: 7});
     initialize_sat_heatmap();
 
     pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
@@ -121,15 +122,17 @@ function initialize_coral_map() {
 
     legendHeatmap = document.getElementById('legendHeatmap');
 
-    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+    //map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
-    google.maps.event.addListenerOnce('tilesloaded',function(){selectControl(0)});
+    //map.addListener('tilesloaded',function(){selectControl(0)});
     selectControl(0);
 }
 
 
 function adjust_sat_overlay(){
-	satHeatOverlay();
+	if (selectedControl == 1){
+		satHeatOverlay();
+	}
 	//if (map.getZoom() == 12 || map.getZoom() == 11) {
 	//}
 }
@@ -186,13 +189,18 @@ function keep_marker_centered(){
 
 function selectControl(item) {
     clearMap();
+    selectedControl = item;
     if (item == 0) {pointOverlay();}
-    else if (item == 1) {satHeatOverlay();}
+    else if (item == 1) {
+	    satHeatOverlay();
+	    legendHeatmap.style.display="block";
+    }
 
     for (i = 0; i < controllist.length; i++ ) {
       controllist[i].deselect();
     }
     controllist[item].select();
+
 }
 
 function clearMap(){
@@ -217,7 +225,7 @@ function pointHeatOverlay(){
 
 
 function satHeatOverlay(){
-	if (map.getZoom() >= 11) {
+	if (map.getZoom() >= 10) {
 		satHeatmap.set('opacity',1.);
 		satHeatmapCoarse.set('opacity',0.);
 	}
@@ -319,7 +327,7 @@ function launch_read_script() {
                     add_marker(observed_bleaching_points[i], map, infowindow, return_data[i][4])
                  };
 
-		initialize_point_heatmap(observed_bleaching_points);
+		//initialize_point_heatmap(observed_bleaching_points);
 
 
 	});
