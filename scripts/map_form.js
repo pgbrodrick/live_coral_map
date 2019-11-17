@@ -51,13 +51,14 @@ function initialize_coral_map() {
     addpointDiv = new AddPointDiv(map);
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(addpointDiv.div);
 
-    var pointControlDiv = new OverlayDiv(map, 0, "Bleaching Observations");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
 
-    var satHeatControlDiv = new OverlayDiv(map, 1, "Satellite Update");
+    var satHeatControlDiv = new OverlayDiv(map, 0, "Satellite Update");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(satHeatControlDiv.div);
 
-    controllist = [ pointControlDiv, satHeatControlDiv];
+    var pointControlDiv = new OverlayDiv(map, 1, "Bleaching Observations");
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(pointControlDiv.div);
+
+    controllist = [ satHeatControlDiv, pointControlDiv ];
 
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 1600, radius: 15});
@@ -130,7 +131,7 @@ function initialize_coral_map() {
 
 
 function adjust_sat_overlay(){
-	if (selectedControl == 1){
+	if (selectedControl == 0){
 		satHeatOverlay();
 	}
 	//if (map.getZoom() == 12 || map.getZoom() == 11) {
@@ -190,8 +191,8 @@ function keep_marker_centered(){
 function selectControl(item) {
     clearMap();
     selectedControl = item;
-    if (item == 0) {pointOverlay();}
-    else if (item == 1) {
+    if (item == 1) {pointOverlay();}
+    else if (item == 0) {
 	    satHeatOverlay();
 	    legendHeatmap.style.display="block";
     }
