@@ -191,9 +191,14 @@ function keep_marker_centered(){
 function selectControl(item) {
     clearMap();
     selectedControl = item;
-    if (item == 1) {pointOverlay();}
+    if (item == 1) {
+	    pointOverlay();
+	    legendHeatmap.style.display="none";
+	    legend.style.display="block";
+    }
     else if (item == 0) {
 	    satHeatOverlay();
+	    legend.style.display="none";
 	    legendHeatmap.style.display="block";
     }
 
