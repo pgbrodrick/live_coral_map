@@ -105,7 +105,7 @@ function initialize_coral_map() {
     report_point.setMap(map);
     google.maps.event.addListener(report_point,'dragend',function(){update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng())});
     google.maps.event.addListener(map, 'idle', function() {keep_marker_centered()});
-    //document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
+    document.getElementById("submission_button").addEventListener("click",function(){submit_form()});
 
 
     legend = document.getElementById('legend');
@@ -265,29 +265,29 @@ function show_form(){
   
   if (x.style.display == 'none' || x.style.display == ""){
   x.style.display = "block";
-  //addpointDiv.control.controlText.style.color = caogreen;
+  addpointDiv.control.controlText.style.color = caogreen;
 
-  //update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng());
+  update_latlong(report_point.getPosition().lat(),report_point.getPosition().lng());
 
-  //var today = new Date();
-  //var dd = today.getDate();
-  //var mm = today.getMonth() + 1; //January is 0!
-  //
-  //var yyyy = today.getFullYear();
-  //if (dd < 10) {
-  //  dd = '0' + dd;
-  //} 
-  //if (mm < 10) {
-  //  mm = '0' + mm;
-  //} 
-  //var today = mm + '/' + dd + '/' + yyyy;
-  //document.getElementById('submit_date').value = today;
-  //document.getElementById("reef_expert").value = 'None';
-  //M.updateTextFields();
-  //}
-  //else {
-  //      x.style.display = "none";
-  //      addpointDiv.control.controlText.style.color = 'rgb(0,0,0)';
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  } 
+  if (mm < 10) {
+    mm = '0' + mm;
+  } 
+  var today = mm + '/' + dd + '/' + yyyy;
+  document.getElementById('submit_date').value = today;
+  document.getElementById("reef_expert").value = 'None';
+  M.updateTextFields();
+  }
+  else {
+        x.style.display = "none";
+        addpointDiv.control.controlText.style.color = 'rgb(0,0,0)';
   }
 }
 
@@ -415,7 +415,7 @@ function submit_form() {
 function AddPointDiv(map) {
   this.div = document.createElement('div');
   this.div.index = 1;
-  //this.control = new AddPointControl(this.div, map);
+  this.control = new AddPointControl(this.div, map);
 }
 AddPointDiv.prototype.activate = function() {
   this.control.controlText.style.color = caogreen;
@@ -518,21 +518,21 @@ function MyLocationControl(controlDiv, map) {
 
   // Setup the click event listener
   this.controlUI.addEventListener('click', function() {
-    //show_form();
+    show_form();
     
-    //navigator.geolocation.getCurrentPosition(function(position) {
-    //  var pos = {
-    //    lat: position.coords.latitude,
-    //    lng: position.coords.longitude
-    //  };
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-    //  my_location_infowindow = new google.maps.InfoWindow();
-    //  my_location_infoWindow.setPosition(pos);
-    //  my_location_infoWindow.setContent('My Location.');
-    //  my_location_infoWindow.open(map);
-    //  map.setCenter(pos);
-    //}, function() {
-    //});
+      my_location_infowindow = new google.maps.InfoWindow();
+      my_location_infoWindow.setPosition(pos);
+      my_location_infoWindow.setContent('My Location.');
+      my_location_infoWindow.open(map);
+      map.setCenter(pos);
+    }, function() {
+    });
 
 
   });
