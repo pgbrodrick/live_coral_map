@@ -63,11 +63,12 @@ function initialize_coral_map() {
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 800, radius: 10});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)], maxIntensity: 1600, radius: 15});
     //satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.002, maxIntensity: 800, dissipating: false});
+	//  Comment out these next 2 lines unti we have satellite data
     satHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], radius: 0.005, maxIntensity: 400, dissipating: false});
     satHeatmapCoarse = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(18.5,-160)], maxIntensity: 2000, radius: 7});
     initialize_sat_heatmap();
 
-    pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
+    //pointHeatmap = new google.maps.visualization.HeatmapLayer({data: [new google.maps.LatLng(200,100)]});
 
     launch_read_script();
 
@@ -85,7 +86,7 @@ function initialize_coral_map() {
     map.addListener('center_changed', function() {nodata_marker.setPosition(map.getCenter());});
     nodata_info = new google.maps.InfoWindow({content: "NO BLEACHING DETECTED BY OUR SATELLITES YET"});
 
-    map.addListener('zoom_changed', function() {adjust_sat_overlay();});
+    //map.addListener('zoom_changed', function() {adjust_sat_overlay();});
 
     //// Try HTML5 geolocation.
     //if (navigator.geolocation) {
@@ -125,8 +126,9 @@ function initialize_coral_map() {
 
     //map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 
-    //map.addListener('tilesloaded',function(){selectControl(0)});
-    selectControl(0);
+    map.addListener('tilesloaded',function(){selectControl(1)});
+    //selectControl(0);  // control 0 is the satellite heatmap
+    selectControl(1);
 }
 
 
@@ -219,6 +221,7 @@ function clearMap(){
 function pointOverlay(){
 	//pointHeatmap.set('opacity',0.75)
 	report_point.set('visible',true);
+	// TURN OF POINTS DISPLAY UNTIL WE HAVE NEW CONFIRMED POINTS FOR 2020
 	for (var i = 0; i < markers.length; i++){
 		markers[i].set('visible',true);
 	}
@@ -240,9 +243,9 @@ function satHeatOverlay(){
 		satHeatmap.set('opacity',0.);
 	}
 	report_point.set('visible',false);
-	for (var i = 0; i < markers.length; i++){
-		markers[i].set('visible',false);
-	}
+	//for (var i = 0; i < markers.length; i++){
+//		markers[i].set('visible',false);
+//	}
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].clear()
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legendHeatmap);
 
@@ -333,7 +336,7 @@ function launch_read_script() {
                     add_marker(observed_bleaching_points[i], map, infowindow, return_data[i][4])
                  };
 
-		//initialize_point_heatmap(observed_bleaching_points);
+		initialize_point_heatmap(observed_bleaching_points);
 
 
 	});
@@ -353,12 +356,12 @@ function initialize_point_heatmap(obs) {
 
 function initialize_sat_heatmap() {
     // Create point marker Heatmap
-	//nodata_info.open(map, nodata_marker);
-	//report_point.set('visible',false);
+//	nodata_info.open(map, nodata_marker);
+//	report_point.set('visible',false);
 
         $.getJSON( '/_read_satellite_data',{}, function (data) 
 	{
-		
+	
 	   	var return_data = Papa.parse(data.return_value).data;
 		var sat_heatmap_data = []
 		for (var index = 0; index < return_data.length-1; index++)
